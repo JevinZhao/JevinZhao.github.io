@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="搭建个人博客过程1.安装node.js以及git略 2.安装hexo-cli脚手架1npm install -g hexo-cli   3.初始化博客项目12&#x2F;&#x2F;初始化hexo项目hexo init hexo-blog  报错无法识别”hexo”,网上查阅资料发现在安装node.js时，配置npm安装全局模块的路径与缓存路径，按照之前csdn上面的教程做，配置环境变量是错误的，这也是为什么之前项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建本博客过程以及遇到坑">
+<meta property="og:url" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/index.html">
+<meta property="og:site_name" content="Jevin Zhao">
+<meta property="og:description" content="搭建个人博客过程1.安装node.js以及git略 2.安装hexo-cli脚手架1npm install -g hexo-cli   3.初始化博客项目12&#x2F;&#x2F;初始化hexo项目hexo init hexo-blog  报错无法识别”hexo”,网上查阅资料发现在安装node.js时，配置npm安装全局模块的路径与缓存路径，按照之前csdn上面的教程做，配置环境变量是错误的，这也是为什么之前项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311225425145.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311230123595.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311230349493.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311230639253.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311232156723.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311232545447.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311232925952.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311233029684.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311233318861.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315210029160.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315220721069.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315220919790.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315222109057.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315222423495.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315222626563.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210315222949736.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316064815803.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316071541859.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316071642711.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316073129174.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316073732101.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316212555650.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316212825215.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316214855281.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316220238879.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316224026268.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316224340369.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210316230611516.png">
+<meta property="og:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210317202434086.png">
+<meta property="article:published_time" content="2021-03-17T21:16:42.000Z">
+<meta property="article:modified_time" content="2021-03-17T14:35:14.870Z">
+<meta property="article:author" content="Jevin Zhao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/image-20210311225425145.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>搭建本博客过程以及遇到坑</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/03/17/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&text=搭建本博客过程以及遇到坑"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&is_video=false&description=搭建本博客过程以及遇到坑"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=搭建本博客过程以及遇到坑&body=Check out this article: http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&name=搭建本博客过程以及遇到坑&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&t=搭建本博客过程以及遇到坑"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">搭建个人博客过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85node-js%E4%BB%A5%E5%8F%8Agit"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.安装node.js以及git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85hexo-cli%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.安装hexo-cli脚手架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.初始化博客项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98%EF%BC%8C%E5%B9%B6%E4%B8%8B%E8%BD%BD%E5%88%B0%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.选择主题，并下载到项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.修改hexo配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-github%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.github新建仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8Bgit%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.建本地仓库添加远程git地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.安装部署插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E8%BF%90%E8%A1%8C%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.运行部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E8%AE%BF%E9%97%AE%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A1%B5"><span class="toc-number">1.0.10.</span> <span class="toc-text">10.访问博客主页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.11.</span> <span class="toc-text">11.自动化部署</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        搭建本博客过程以及遇到坑
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Jevin Zhao</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-03-17T21:16:42.000Z" itemprop="datePublished">2021-03-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="搭建个人博客过程"><a href="#搭建个人博客过程" class="headerlink" title="搭建个人博客过程"></a>搭建个人博客过程</h2><h4 id="1-安装node-js以及git"><a href="#1-安装node-js以及git" class="headerlink" title="1.安装node.js以及git"></a>1.安装node.js以及git</h4><p>略</p>
+<h4 id="2-安装hexo-cli脚手架"><a href="#2-安装hexo-cli脚手架" class="headerlink" title="2.安装hexo-cli脚手架"></a>2.安装hexo-cli脚手架</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20210311225425145.png" alt="image-20210311225425145"></p>
+<h4 id="3-初始化博客项目"><a href="#3-初始化博客项目" class="headerlink" title="3.初始化博客项目"></a>3.初始化博客项目</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//初始化hexo项目</span><br><span class="line">hexo init hexo<span class="literal">-blog</span></span><br></pre></td></tr></table></figure>
+
+<p>报错无法识别”hexo”,网上查阅资料发现在安装node.js时，配置npm安装全局模块的路径与缓存路径，按照之前csdn上面的教程做，配置环境变量是错误的，这也是为什么之前项目跑不起来的原因，详见<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023871608%E3%80%82">https://segmentfault.com/a/1190000023871608。</a></p>
+<p>继续执行该命令，报错</p>
+<p><img src="image-20210311230123595.png" alt="image-20210311230123595"></p>
+<p>查阅资料，计算机上启动 Windows PowerShell 时，执行策略很可能是 Restricted（默认设置）。</p>
+<p>查看计算机上的现用执行策略，打开PowerShell 然后输入 <strong>get-executionpolicy</strong>，表明是Restricted</p>
+<p><img src="image-20210311230349493.png" alt="image-20210311230349493"></p>
+<p>以管理员身份打开PowerShell 输入 <strong>set-executionpolicy remotesigned</strong>。</p>
+<p>继续执行命令，报错</p>
+<p><img src="image-20210311230639253.png" alt="image-20210311230639253"></p>
+<p>查阅资料发现是开VPN的问题，关掉VPN再执行命令</p>
+<p><img src="image-20210311232156723.png" alt="image-20210311232156723"></p>
+<p>4.运行项目</p>
+<img src="image-20210311232545447.png" alt="image-20210311232545447" style="zoom: 50%;" />
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20210311232925952.png" alt="image-20210311232925952"></p>
+<p>项目运行在本地4000端口，访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> </p>
+<img src="image-20210311233029684.png" alt="image-20210311233029684" style="zoom: 50%;" />
+
+<p>项目结构：</p>
+<p><img src="image-20210311233318861.png" alt="image-20210311233318861"></p>
+<h4 id="4-选择主题，并下载到项目"><a href="#4-选择主题，并下载到项目" class="headerlink" title="4.选择主题，并下载到项目"></a>4.选择主题，并下载到项目</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/probberechts/hexo<span class="literal">-theme</span><span class="literal">-cactus</span>.git themes/cactus  </span><br></pre></td></tr></table></figure>
+
+<p>挂了梯子，下载速度很慢</p>
+<p><img src="image-20210315210029160.png" alt="image-20210315210029160"></p>
+<p>查阅资料，发现是挂了梯子，Git也要设置代理，详见：<a target="_blank" rel="noopener" href="https://blog.csdn.net/isea533/article/details/84748009">https://blog.csdn.net/isea533/article/details/84748009</a></p>
+<p>梯子端口查看</p>
+<p><img src="image-20210315220721069.png" alt="image-20210315220721069"></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -<span class="literal">-global</span> http.https://github.com.proxy socks5://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">10808</span></span><br></pre></td></tr></table></figure>
+
+<p>重新clone</p>
+<p><img src="image-20210315220919790.png" alt="image-20210315220919790"></p>
+<p>删除主题文件下.git文件，方便统一管理</p>
+<img src="image-20210315222109057.png" alt="image-20210315222109057"  />
+
+<h4 id="5-修改hexo配置文件"><a href="#5-修改hexo配置文件" class="headerlink" title="5.修改hexo配置文件"></a>5.修改hexo配置文件</h4><p>打开根目录下config.yml文件，修改主题为：cactus</p>
+<p><img src="image-20210315222423495.png" alt="image-20210315222423495"></p>
+<p>重启服务</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> </p>
+<p><img src="image-20210315222626563.png" alt="image-20210315222626563"></p>
+<p>修改白色背景</p>
+<p>在主题文件夹下找到config.yml文件，修改colorscheme属性为white</p>
+<p><img src="image-20210315222949736.png" alt="image-20210315222949736"></p>
+<h4 id="6-github新建仓库"><a href="#6-github新建仓库" class="headerlink" title="6.github新建仓库"></a>6.github新建仓库</h4><p><img src="image-20210316064815803.png" alt="image-20210316064815803"></p>
+<p>仓库名有两种方式：</p>
+<p>1.[username].github.io</p>
+<p>此种命名打包产物必须放在master分支上，访问路径为：https://[username].github.io</p>
+<p>2.可以自定义仓库名</p>
+<p>打包产物gh-pages分支，访问路径为：https://[username].github.io.[repo]</p>
+<p>这里采用第一种方式</p>
+<p><img src="image-20210316071541859.png" alt="image-20210316071541859"></p>
+<p>建好之后</p>
+<p><img src="image-20210316071642711.png" alt="image-20210316071642711"></p>
+<h4 id="7-建本地仓库添加远程git地址"><a href="#7-建本地仓库添加远程git地址" class="headerlink" title="7.建本地仓库添加远程git地址"></a>7.建本地仓库添加远程git地址</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//在博客项目根目录下初始化本地仓库</span><br><span class="line">git init</span><br><span class="line">//添加远程git地址</span><br><span class="line">git remote add origin git@github.com:JevinZhao/JevinZhao.github.io.git</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-安装部署插件"><a href="#8-安装部署插件" class="headerlink" title="8.安装部署插件"></a>8.安装部署插件</h4><p>作用：将生成好的代码部署到一个具体分支</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add hexo<span class="literal">-deployer</span><span class="literal">-git</span></span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<p><img src="image-20210316073129174.png" alt="image-20210316073129174"></p>
+<p>查阅资料，应该是没有安装yarn，那就使用npm吧</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install === yarn </span><br><span class="line">npm install taco -<span class="literal">-save</span> === yarn add taco</span><br><span class="line">npm uninstall taco -<span class="literal">-save</span> === yarn remove taco</span><br><span class="line">npm install taco -<span class="literal">-save</span><span class="literal">-dev</span> === yarn add taco -<span class="literal">-dev</span></span><br><span class="line">npm update -<span class="literal">-save</span> === yarn upgrade</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-deployer</span><span class="literal">-git</span> -<span class="literal">-save</span></span><br></pre></td></tr></table></figure>
+
+<p>修改博客项目根目录下config.yml文件</p>
+<p><img src="image-20210316073732101.png" alt="image-20210316073732101"></p>
+<h4 id="9-运行部署"><a href="#9-运行部署" class="headerlink" title="9.运行部署"></a>9.运行部署</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run deploy</span><br><span class="line">//或者</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>中间可能会让你登录github按提示操作即可</p>
+<p><img src="image-20210316212555650.png" alt="image-20210316212555650"></p>
+<p>完成编译，并将产物public文件夹下的文件提交到github</p>
+<p><img src="image-20210316212825215.png" alt="image-20210316212825215"></p>
+<h4 id="10-访问博客主页"><a href="#10-访问博客主页" class="headerlink" title="10.访问博客主页"></a>10.访问博客主页</h4><p><a target="_blank" rel="noopener" href="https://jevinzhao.github.io/">https://jevinzhao.github.io/</a></p>
+<p><img src="image-20210316214855281.png" alt="image-20210316214855281"></p>
+<h4 id="11-自动化部署"><a href="#11-自动化部署" class="headerlink" title="11.自动化部署"></a>11.自动化部署</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//提交源代码到本地仓库</span><br><span class="line">git add .</span><br><span class="line">git commit <span class="literal">-m</span> <span class="string">&#x27;first&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建新分支</p>
+<p><img src="image-20210316220238879.png" alt="image-20210316220238879"></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//提交代码到github新分支上</span><br><span class="line">git push -<span class="literal">-set</span><span class="literal">-upstream</span> origin myblog</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20210316224026268.png" alt="image-20210316224026268"></p>
+<p>编写自动化部署脚本</p>
+<p>在博客项目根目录下建立.github/workflows/deploy.yml文件</p>
+<p><img src="image-20210316224340369.png" alt="image-20210316224340369"></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">on:</span> [<span class="string">push</span>]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">🛎️</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span> <span class="comment"># If you&#x27;re using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">persist-credentials:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">and</span> <span class="string">Build</span> <span class="string">🔧</span> <span class="comment"># This example project is built using npm and outputs the result to the &#x27;build&#x27; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">CI:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">🚀</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">JamesIves/github-pages-deploy-action@releases/v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">GITHUBTOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUBTOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">BRANCH:</span> <span class="string">master</span> <span class="comment"># The branch the action should deploy to.</span></span><br><span class="line">          <span class="attr">FOLDER:</span> <span class="string">public</span> <span class="comment"># The folder the action should deploy.</span></span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<p>在源文件下修改博客内容，提交</p>
+<p><img src="image-20210316230611516.png" alt="image-20210316230611516"></p>
+<p>访问博客主页</p>
+<p><img src="image-20210317202434086.png" alt="image-20210316230611516"></p>
+<p>自动部署成功</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">搭建个人博客过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85node-js%E4%BB%A5%E5%8F%8Agit"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.安装node.js以及git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85hexo-cli%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.安装hexo-cli脚手架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.初始化博客项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98%EF%BC%8C%E5%B9%B6%E4%B8%8B%E8%BD%BD%E5%88%B0%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.选择主题，并下载到项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.修改hexo配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-github%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.github新建仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8Bgit%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.建本地仓库添加远程git地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.安装部署插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E8%BF%90%E8%A1%8C%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.运行部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E8%AE%BF%E9%97%AE%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A1%B5"><span class="toc-number">1.0.10.</span> <span class="toc-text">10.访问博客主页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.11.</span> <span class="toc-text">11.自动化部署</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&text=搭建本博客过程以及遇到坑"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&is_video=false&description=搭建本博客过程以及遇到坑"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=搭建本博客过程以及遇到坑&body=Check out this article: http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&title=搭建本博客过程以及遇到坑"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&name=搭建本博客过程以及遇到坑&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/&t=搭建本博客过程以及遇到坑"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Jevin Zhao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
