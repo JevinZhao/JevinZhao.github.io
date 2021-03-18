@@ -33,7 +33,7 @@ links:
   # Gallery:
   # RSS:
   # AliPay:
-  ZhiHu: https://www.zhihu.com/people/sirice
+  ZhiHu: 
   # LinkedIn:
   # FaceBook:
   # Twitter:
@@ -49,7 +49,7 @@ links:
   # QQ:
   # Weibo:
   # WeChat:
-  Github: https://github.com/Siricee
+  Github: 
 
 # how links show: you have 2 choice--text or icon.
 links_text_enable: false
