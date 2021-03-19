@@ -1,5 +1,5 @@
 ---
-title: Hello World test auto deploy
+title: Hello World 
 data: 2021-03-15 00:00:00
 tags: 博客搭建
 categories: 工具
