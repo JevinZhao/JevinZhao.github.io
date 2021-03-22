@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>书单--持续更新 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">书单--持续更新</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">三月 22, 2021&nbsp;&nbsp;22:26:38</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <div align="center">
+
+<h1 id="Hi-I-am-Jevin-here-my-reading-list-👇"><a href="#Hi-I-am-Jevin-here-my-reading-list-👇" class="headerlink" title="Hi, I am Jevin, here my reading list!👇"></a>Hi, I am Jevin, here my reading list!👇</h1><h2 id="Java📖"><a href="#Java📖" class="headerlink" title="Java📖"></a>Java📖</h2><p><strong>Head First Java</strong>✅</p>
+<p><strong>Java核心技术</strong>✅</p>
+<p><strong>代码整洁之道</strong>📓</p>
+<p><strong>码出高效</strong>📓</p>
+<p><strong>Effective Java</strong>🔨</p>
+<p><strong>Java编程思想</strong>📓</p>
+<p><strong>深入分析Java Web技术内幕</strong>📓</p>
+<p><strong>Java并发编程实战</strong>📓</p>
+<p><strong>深入理解Java虚拟机</strong>📓</p>
+<h2 id="数据结构与算法📚"><a href="#数据结构与算法📚" class="headerlink" title="数据结构与算法📚"></a>数据结构与算法📚</h2><p><strong>大话数据结构</strong>✅</p>
+<p><strong>数据结构与算法：Java语言描述</strong>📓</p>
+<p><strong>算法导论</strong>📓</p>
+<p><strong>算法</strong>📓</p>
+<p><strong>算法图解</strong>📓</p>
+<p><strong>剑指offer</strong>📓</p>
+<h2 id="计算机网络🌍"><a href="#计算机网络🌍" class="headerlink" title="计算机网络🌍"></a>计算机网络🌍</h2><p><strong>图解HTTP</strong>📓</p>
+<p><strong>图解TCP_IP</strong>📓</p>
+<p><strong>TCP-IP详解卷1</strong>📓</p>
+<p><strong>TCP-IP详解卷2</strong>📓</p>
+<p><strong>TCP-IP详解卷3</strong>📓</p>
+<p><strong>Java网络编程</strong>📓</p>
+<h2 id="操作系统🎮"><a href="#操作系统🎮" class="headerlink" title="操作系统🎮"></a>操作系统🎮</h2><p><strong>深入理解计算机系统</strong>📓</p>
+<h2 id="数据库📁"><a href="#数据库📁" class="headerlink" title="数据库📁"></a>数据库📁</h2><p><strong>MySQL必知必会</strong>✅</p>
+<p><strong>SQL CookBook 中文版</strong>🔨</p>
+<p><strong>SQL 经典实例</strong>📓</p>
+<p><strong>MySQL技术内幕 InnoDB存储引擎</strong>📓</p>
+<p><strong>高可用MySQL:构建健壮的数据中心</strong>📓</p>
+<p><strong>高性能MySQL第三版</strong>📓</p>
+<p><strong>Redis开发与运维</strong>📓</p>
+<p><strong>Redis设计与实现</strong>📓</p>
+<p><strong>Redis深度历险:核心原理和应用实践</strong>📓</p>
+<p><strong>Redis实战</strong>📓</p>
+<h2 id="设计模式🧬"><a href="#设计模式🧬" class="headerlink" title="设计模式🧬"></a>设计模式🧬</h2><p><strong>Head First 设计模式</strong>📓</p>
+<p><strong>图解设计模式</strong>📓</p>
+<p><strong>设计模式_可复用面向对象软件的基础</strong>📓</p>
+<h2 id="工具📦"><a href="#工具📦" class="headerlink" title="工具📦"></a>工具📦</h2><p><strong>Git权威指南</strong>📓</p>
+<h2 id="理财投资🚀"><a href="#理财投资🚀" class="headerlink" title="理财投资🚀"></a>理财投资🚀</h2><p><strong>穷爸爸与富爸爸</strong>🔨</p>
+</div>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"># 读书笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/03/17/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E5%9D%91/">搭建本博客过程以及遇到坑</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
