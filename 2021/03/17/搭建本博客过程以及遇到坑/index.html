@@ -201,104 +201,101 @@
             <h2 id="搭建个人博客过程"><a href="#搭建个人博客过程" class="headerlink" title="搭建个人博客过程"></a>搭建个人博客过程</h2><h3 id="1-安装node-js以及git"><a href="#1-安装node-js以及git" class="headerlink" title="1.安装node.js以及git"></a>1.安装node.js以及git</h3><p>略</p>
 <h3 id="2-安装hexo-cli脚手架"><a href="#2-安装hexo-cli脚手架" class="headerlink" title="2.安装hexo-cli脚手架"></a>2.安装hexo-cli脚手架</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="image-20210311225425145.png" alt="image-20210311225425145"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGSds"><img src="https://z3.ax1x.com/2021/04/15/cRGSds.png" alt="cRGSds.png"></a></p>
 <h3 id="3-初始化博客项目"><a href="#3-初始化博客项目" class="headerlink" title="3.初始化博客项目"></a>3.初始化博客项目</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//初始化hexo项目</span><br><span class="line">hexo init hexo<span class="literal">-blog</span></span><br></pre></td></tr></table></figure>
 
 <p>报错无法识别”hexo”,网上查阅资料发现在安装node.js时，配置npm安装全局模块的路径与缓存路径，按照之前csdn上面的教程做，配置环境变量是错误的，这也是为什么之前项目跑不起来的原因，详见<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023871608%E3%80%82">https://segmentfault.com/a/1190000023871608。</a></p>
 <p>继续执行该命令，报错</p>
-<p><img src="image-20210311230123595.png" alt="image-20210311230123595"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGAQU"><img src="https://z3.ax1x.com/2021/04/15/cRGAQU.png" alt="cRGAQU.png"></a></p>
 <p>查阅资料，计算机上启动 Windows PowerShell 时，执行策略很可能是 Restricted（默认设置）。</p>
 <p>查看计算机上的现用执行策略，打开PowerShell 然后输入 <strong>get-executionpolicy</strong>，表明是Restricted</p>
-<p><img src="image-20210311230349493.png" alt="image-20210311230349493"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGEyF"><img src="https://z3.ax1x.com/2021/04/15/cRGEyF.png" alt="cRGEyF.png"></a></p>
 <p>以管理员身份打开PowerShell 输入 <strong>set-executionpolicy remotesigned</strong>。</p>
 <p>继续执行命令，报错</p>
-<p><img src="image-20210311230639253.png" alt="image-20210311230639253"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGKF1"><img src="https://z3.ax1x.com/2021/04/15/cRGKF1.png" alt="cRGKF1.png"></a></p>
 <p>查阅资料发现是开VPN的问题，关掉VPN再执行命令</p>
-<p><img src="image-20210311232156723.png" alt="image-20210311232156723"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGKF1"><img src="https://z3.ax1x.com/2021/04/15/cRGKF1.png" alt="cRGKF1.png"></a></p>
 <p>运行项目</p>
-<img src="image-20210311232545447.png" alt="image-20210311232545447" style="zoom: 50%;" />
-
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGYeH"><img src="https://z3.ax1x.com/2021/04/15/cRGYeH.md.png" alt="cRGYeH.md.png"></a></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p><img src="image-20210311232925952.png" alt="image-20210311232925952"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGdYt"><img src="https://z3.ax1x.com/2021/04/15/cRGdYt.png" alt="cRGdYt.png"></a></p>
 <p>项目运行在本地4000端口，访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> </p>
-<img src="image-20210311233029684.png" alt="image-20210311233029684" style="zoom: 50%;" />
-
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGgTs"><img src="https://z3.ax1x.com/2021/04/15/cRGgTs.md.png" alt="cRGgTs.md.png"></a></p>
 <p>项目结构：</p>
-<p><img src="image-20210311233318861.png" alt="image-20210311233318861"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGff0"><img src="https://z3.ax1x.com/2021/04/15/cRGff0.png" alt="cRGff0.png"></a></p>
 <h3 id="4-选择主题，并下载到项目"><a href="#4-选择主题，并下载到项目" class="headerlink" title="4.选择主题，并下载到项目"></a>4.选择主题，并下载到项目</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/probberechts/hexo<span class="literal">-theme</span><span class="literal">-cactus</span>.git themes/cactus  </span><br></pre></td></tr></table></figure>
 
 <p>挂了梯子，下载速度很慢</p>
-<p><img src="image-20210315210029160.png" alt="image-20210315210029160"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRG7m4"><img src="https://z3.ax1x.com/2021/04/15/cRG7m4.png" alt="cRG7m4.png"></a></p>
 <p>查阅资料，发现是挂了梯子，Git也要设置代理，详见：<a target="_blank" rel="noopener" href="https://blog.csdn.net/isea533/article/details/84748009">https://blog.csdn.net/isea533/article/details/84748009</a></p>
 <p>梯子端口查看</p>
-<p><img src="image-20210315220721069.png" alt="image-20210315220721069"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGLkR"><img src="https://z3.ax1x.com/2021/04/15/cRGLkR.png" alt="cRGLkR.png"></a></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -<span class="literal">-global</span> http.https://github.com.proxy socks5://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">10808</span></span><br></pre></td></tr></table></figure>
 
 <p>重新clone</p>
-<p><img src="image-20210315220919790.png" alt="image-20210315220919790"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRGvp6"><img src="https://z3.ax1x.com/2021/04/15/cRGvp6.png" alt="cRGvp6.png"></a></p>
 <p>删除主题文件下.git文件，方便统一管理</p>
-<img src="image-20210315222109057.png" alt="image-20210315222109057"  />
-
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJP7d"><img src="https://z3.ax1x.com/2021/04/15/cRJP7d.md.png" alt="cRJP7d.md.png"></a></p>
 <h3 id="5-修改hexo配置文件"><a href="#5-修改hexo配置文件" class="headerlink" title="5.修改hexo配置文件"></a>5.修改hexo配置文件</h3><p>打开根目录下config.yml文件，修改主题为：cactus</p>
-<p><img src="image-20210315222423495.png" alt="image-20210315222423495"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJAht"><img src="https://z3.ax1x.com/2021/04/15/cRJAht.png" alt="cRJAht.png"></a></p>
 <p>重启服务</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p>访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> </p>
-<p><img src="image-20210315222626563.png" alt="image-20210315222626563"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJung"><img src="https://z3.ax1x.com/2021/04/15/cRJung.png" alt="cRJung.png"></a></p>
 <p>修改白色背景</p>
 <p>在主题文件夹下找到config.yml文件，修改colorscheme属性为white</p>
-<p><img src="image-20210315222949736.png" alt="image-20210315222949736"></p>
-<h3 id="6-github新建仓库"><a href="#6-github新建仓库" class="headerlink" title="6.github新建仓库"></a>6.github新建仓库</h3><p><img src="image-20210316064815803.png" alt="image-20210316064815803"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJM7j"><img src="https://z3.ax1x.com/2021/04/15/cRJM7j.png" alt="cRJM7j.png"></a></p>
+<h3 id="6-github新建仓库"><a href="#6-github新建仓库" class="headerlink" title="6.github新建仓库"></a>6.github新建仓库</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJ0E9"><img src="https://z3.ax1x.com/2021/04/15/cRJ0E9.png" alt="cRJ0E9.png"></a></p>
 <p>仓库名有两种方式：</p>
 <p>1.[username].github.io</p>
 <p>此种命名打包产物必须放在master分支上，访问路径为：https://[username].github.io</p>
 <p>2.可以自定义仓库名</p>
 <p>打包产物gh-pages分支，访问路径为：https://[username].github.io.[repo]</p>
 <p>这里采用第一种方式</p>
-<p><img src="image-20210316071541859.png" alt="image-20210316071541859"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJRDe"><img src="https://z3.ax1x.com/2021/04/15/cRJRDe.png" alt="cRJRDe.png"></a></p>
 <p>建好之后</p>
-<p><img src="image-20210316071642711.png" alt="image-20210316071642711"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJhEd"><img src="https://z3.ax1x.com/2021/04/15/cRJhEd.png" alt="cRJhEd.png"></a></p>
 <h3 id="7-建本地仓库添加远程git地址"><a href="#7-建本地仓库添加远程git地址" class="headerlink" title="7.建本地仓库添加远程git地址"></a>7.建本地仓库添加远程git地址</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//在博客项目根目录下初始化本地仓库</span><br><span class="line">git init</span><br><span class="line">//添加远程git地址</span><br><span class="line">git remote add origin git@github.com:JevinZhao/JevinZhao.github.io.git</span><br></pre></td></tr></table></figure>
 
 <h3 id="8-安装部署插件"><a href="#8-安装部署插件" class="headerlink" title="8.安装部署插件"></a>8.安装部署插件</h3><p>作用：将生成好的代码部署到一个具体分支</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add hexo<span class="literal">-deployer</span><span class="literal">-git</span></span><br></pre></td></tr></table></figure>
 
 <p>报错</p>
-<p><img src="image-20210316073129174.png" alt="image-20210316073129174"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRJ54I"><img src="https://z3.ax1x.com/2021/04/15/cRJ54I.png" alt="cRJ54I.png"></a></p>
 <p>查阅资料，应该是没有安装yarn，那就使用npm吧</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install === yarn </span><br><span class="line">npm install taco -<span class="literal">-save</span> === yarn add taco</span><br><span class="line">npm uninstall taco -<span class="literal">-save</span> === yarn remove taco</span><br><span class="line">npm install taco -<span class="literal">-save</span><span class="literal">-dev</span> === yarn add taco -<span class="literal">-dev</span></span><br><span class="line">npm update -<span class="literal">-save</span> === yarn upgrade</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-deployer</span><span class="literal">-git</span> -<span class="literal">-save</span></span><br></pre></td></tr></table></figure>
 
 <p>修改博客项目根目录下config.yml文件</p>
-<p><img src="image-20210316073732101.png" alt="image-20210316073732101"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRY92V"><img src="https://z3.ax1x.com/2021/04/15/cRY92V.png" alt="cRY92V.png"></a></p>
 <h3 id="9-运行部署"><a href="#9-运行部署" class="headerlink" title="9.运行部署"></a>9.运行部署</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run deploy</span><br><span class="line">//或者</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>中间可能会让你登录github按提示操作即可</p>
-<p><img src="image-20210316212555650.png" alt="image-20210316212555650"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYEVJ"><img src="https://z3.ax1x.com/2021/04/15/cRYEVJ.png" alt="cRYEVJ.png"></a></p>
 <p>完成编译，并将产物public文件夹下的文件提交到github</p>
-<p><img src="image-20210316212825215.png" alt="image-20210316212825215"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYGad"><img src="https://z3.ax1x.com/2021/04/15/cRYGad.png" alt="cRYGad.png"></a></p>
 <h3 id="10-访问博客主页"><a href="#10-访问博客主页" class="headerlink" title="10.访问博客主页"></a>10.访问博客主页</h3><p><a target="_blank" rel="noopener" href="https://jevinzhao.github.io/">https://jevinzhao.github.io/</a></p>
-<p><img src="image-20210316214855281.png" alt="image-20210316214855281"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYtPI"><img src="https://z3.ax1x.com/2021/04/15/cRYtPI.png" alt="cRYtPI.png"></a></p>
 <h3 id="11-自动化部署"><a href="#11-自动化部署" class="headerlink" title="11.自动化部署"></a>11.自动化部署</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//提交源代码到本地仓库</span><br><span class="line">git add .</span><br><span class="line">git commit <span class="literal">-m</span> <span class="string">&#x27;first&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>创建新分支</p>
-<p><img src="image-20210316220238879.png" alt="image-20210316220238879"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYwM8"><img src="https://z3.ax1x.com/2021/04/15/cRYwM8.png" alt="cRYwM8.png"></a></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//提交代码到github新分支上</span><br><span class="line">git push -<span class="literal">-set</span><span class="literal">-upstream</span> origin myblog</span><br></pre></td></tr></table></figure>
 
-<p><img src="image-20210316224026268.png" alt="image-20210316224026268"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYBqg"><img src="https://z3.ax1x.com/2021/04/15/cRYBqg.png" alt="cRYBqg.png"></a></p>
 <p>编写自动化部署脚本</p>
 <p>在博客项目根目录下建立.github/workflows/deploy.yml文件</p>
-<p><img src="image-20210316224340369.png" alt="image-20210316224340369"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYgGq"><img src="https://z3.ax1x.com/2021/04/15/cRYgGq.png" alt="cRYgGq.png"></a></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">on:</span> [<span class="string">push</span>]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">🛎️</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span> <span class="comment"># If you&#x27;re using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">persist-credentials:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">and</span> <span class="string">Build</span> <span class="string">🔧</span> <span class="comment"># This example project is built using npm and outputs the result to the &#x27;build&#x27; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">CI:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">🚀</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">JamesIves/github-pages-deploy-action@releases/v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">GITHUBTOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUBTOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">BRANCH:</span> <span class="string">master</span> <span class="comment"># The branch the action should deploy to.</span></span><br><span class="line">          <span class="attr">FOLDER:</span> <span class="string">public</span> <span class="comment"># The folder the action should deploy.</span></span><br></pre></td></tr></table></figure>
 
 <p>测试：</p>
 <p>在源文件下修改博客内容，提交</p>
-<p><img src="image-20210316230611516.png" alt="image-20210316230611516"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYIZ4"><img src="https://z3.ax1x.com/2021/04/15/cRYIZ4.png" alt="cRYIZ4.png"></a></p>
 <p>访问博客主页</p>
-<p><img src="image-20210317202434086.png" alt="image-20210316230611516"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRYHiR"><img src="https://z3.ax1x.com/2021/04/15/cRYHiR.png" alt="cRYHiR.png"></a></p>
 <p>自动部署成功</p>
 
         </div>
