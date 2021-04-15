@@ -150,7 +150,7 @@ LRU Cache
 
 详见：
 
-[LRU缓存算法]: https://www.jianshu.com/p/b1ab4a170c3c
+[LRU缓存算法]https://www.jianshu.com/p/b1ab4a170c3c
 
 ### Java源码引用（JDK8）
 
