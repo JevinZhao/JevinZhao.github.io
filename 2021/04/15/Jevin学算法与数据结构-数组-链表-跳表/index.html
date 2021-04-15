@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>Jevin学算法与数据结构-数组,链表,跳表 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Jevin学算法与数据结构-数组,链表,跳表</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">四月 15, 2021&nbsp;&nbsp;21:11:43</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="数组，链表，跳表🌈"><a href="#数组，链表，跳表🌈" class="headerlink" title="数组，链表，跳表🌈"></a>数组，链表，跳表🌈</h2><h2 id="Array🔥"><a href="#Array🔥" class="headerlink" title="Array🔥"></a>Array🔥</h2><h3 id="常见写法"><a href="#常见写法" class="headerlink" title="常见写法"></a>常见写法</h3><p>Java，C++  ：int a[100]</p>
+<p>Python          : list=[]</p>
+<p>JavaScript    : let   x=[1,2,3]</p>
+<h3 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h3><p>在申请创建数组时，计算机在内存中开辟一段连续地址，每一个地址可以通过内存管理器进行访问。如图所示</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnmdK"><img src="https://z3.ax1x.com/2021/04/15/cRnmdK.png" alt="cRnmdK.png"></a></p>
+<p>内存管理器访问数组中任意一个地址的时间复杂度都是O(1)。因此，数组查询数据的速度非常快。</p>
+<h3 id="数组增加元素"><a href="#数组增加元素" class="headerlink" title="数组增加元素"></a>数组增加元素</h3><p>如图所示，假设存在一个数组，里面的元素为ABCEFG，现在要插入元素D</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnEs1"><img src="https://z3.ax1x.com/2021/04/15/cRnEs1.png" alt="cRnEs1.png"></a></p>
+<ol>
+<li>把EFG往下挪一个位置</li>
+<li>插入D</li>
+</ol>
+<p>时间复杂度分析：最好的情况插入到最后一个O(1)，最坏的情况插入到第一个，时间复杂度为O(n)，平均下来时间复杂度为O(n/2)。</p>
+<h3 id="数组删除元素"><a href="#数组删除元素" class="headerlink" title="数组删除元素"></a>数组删除元素</h3><p>以上过程的逆过程</p>
+<ol>
+<li>拿出D</li>
+<li>下面的元素向上挪一个位置</li>
+</ol>
+<h3 id="数组元素访问"><a href="#数组元素访问" class="headerlink" title="数组元素访问"></a>数组元素访问</h3><p>根据索引直接访问对应的内存即可，时间复杂度为O(1)</p>
+<h3 id="Java源码引用（JDK8）"><a href="#Java源码引用（JDK8）" class="headerlink" title="Java源码引用（JDK8）"></a>Java源码引用（JDK8）</h3><p>添加到数组的最后</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Appends the specified element to the end of this list.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> e element to be appended to this list</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;<span class="doctag">@link</span> Collection#add&#125;)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>检查数组容量是否够用</li>
+<li>插入最后一个元素</li>
+</ol>
+<p>添加到数组的指定位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Inserts the specified element at the specified position in this</span></span><br><span class="line"><span class="comment"> * list. Shifts the element currently at that position (if any) and</span></span><br><span class="line"><span class="comment"> * any subsequent elements to the right (adds one to their indices).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> index index at which the specified element is to be inserted</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element element to be inserted</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    rangeCheckForAdd(index);</span><br><span class="line"></span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + <span class="number">1</span>,</span><br><span class="line">                     size - index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>边界检查，判断插入位置是否在数组的索引内</p>
+</li>
+<li><p>检查数组容量</p>
+</li>
+<li><p>将插入位置后的元素向后移动一个位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">System.arraycopy(elementData, index, elementData, index + <span class="number">1</span>,</span><br><span class="line">                      size - index);</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">arraycopy</span><span class="params">(Object src,  <span class="keyword">int</span>  srcPos,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     Object dest, <span class="keyword">int</span> destPos,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     <span class="keyword">int</span> length)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>该方法进行数组元素的复制，该方法在系统包下，涉及到底层的系统调用。在进行元素插入的时候会进行非常多的复制，造成时间复杂度较高，效率较低。</p>
+</li>
+<li><p>将元素插入到指定位置</p>
+</li>
+</ol>
+<h2 id="Linked-List🔥"><a href="#Linked-List🔥" class="headerlink" title="Linked List🔥"></a>Linked List🔥</h2><h3 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h3><p>每一个元素（实际上是一个class，也叫node）有value和next两个成员变量，next指向下一个元素，串在一起就形成了<strong>单向链表</strong>；</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnVqx"><img src="https://z3.ax1x.com/2021/04/15/cRnVqx.png" alt="cRnVqx.png"></a></p>
+<p>当下一个node指回上一个node时，会形成<strong>双向链表</strong>；</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnnIO"><img src="https://z3.ax1x.com/2021/04/15/cRnnIO.png" alt="cRnnIO.png"></a></p>
+<p>当尾指针指回头指针时，形成<strong>循环链表</strong>。</p>
+<h3 id="链表增加结点"><a href="#链表增加结点" class="headerlink" title="链表增加结点"></a>链表增加结点</h3><ol>
+<li>前继节点指针指向新节点</li>
+<li>新节点next指针指向之前的下一个节点</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRneZ6"><img src="https://z3.ax1x.com/2021/04/15/cRneZ6.png" alt="cRneZ6.png"></a><br>时间复杂度分析：操作2次，但是是常数次，时间复杂度为O(1)</p>
+<h3 id="链表删除结点"><a href="#链表删除结点" class="headerlink" title="链表删除结点"></a>链表删除结点</h3><ol>
+<li>打掉前驱节点next，移到后继节点</li>
+<li>打掉目标节点的next</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnAMR"><img src="https://z3.ax1x.com/2021/04/15/cRnAMR.png" alt="cRnAMR.png"></a></p>
+<p>不涉及整个链表的群移操作，亦不涉及元素的复制，时间复杂度为O(1)</p>
+<h3 id="链表元素的访问"><a href="#链表元素的访问" class="headerlink" title="链表元素的访问"></a>链表元素的访问</h3><p>访问链表中任意一个位置，由于没有索引的概念，必须从头结点开始一个一个的往后挪，直到移动到你访问的位置。平均下来的时间复杂度为O(n/2)，也就是O(n)</p>
+<h3 id="工程应用"><a href="#工程应用" class="headerlink" title="工程应用"></a>工程应用</h3><p>LRU Cache</p>
+<p>详见：</p>
+<h3 id="Java源码引用（JDK8）-1"><a href="#Java源码引用（JDK8）-1" class="headerlink" title="Java源码引用（JDK8）"></a>Java源码引用（JDK8）</h3><p>成员变量以及构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSequentialList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Pointer to first node.</span></span><br><span class="line"><span class="comment">     * Invariant: (first == null &amp;&amp; last == null) ||</span></span><br><span class="line"><span class="comment">     *            (first.prev == null &amp;&amp; first.item != null)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Pointer to last node.</span></span><br><span class="line"><span class="comment">     * Invariant: (first == null &amp;&amp; last == null) ||</span></span><br><span class="line"><span class="comment">     *            (last.next == null &amp;&amp; last.item != null)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">transient</span> Node&lt;E&gt; last;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs an empty list.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>成员变量中定义了：元素个数，双向链表的头指针，双向链表的尾部指针；此外，链表中有一个内部类Node，其定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个class的属性有三个：item表示当前数据元素，next表示下一个元素的引用，prev表示前一个元素的引用。<code>LinkedList</code>正是利用这个双向链表的数据结构实现了内部的元素存储，并通过维护一个头指针和尾指针，进行元素的增加和删除。</p>
+<h2 id="Skip-List🔥"><a href="#Skip-List🔥" class="headerlink" title="Skip List🔥"></a>Skip List🔥</h2><h3 id="跳表原理"><a href="#跳表原理" class="headerlink" title="跳表原理"></a>跳表原理</h3><p>目的是优化链表的访问效率，核心思想是<strong>升维</strong>，in other words，<strong>空间换时间</strong></p>
+<p>访问链表的首尾元素是最快的，那么我们可以将链表进行2分处理，即在中间位置上增加一个指针，同时添加一级索引，如果我们要访问中间位置的节点，我们可以直接从一级索引过去，不用从首节点，一步步移过去。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnKiD"><img src="https://z3.ax1x.com/2021/04/15/cRnKiD.png" alt="cRnKiD.png"></a></p>
+<p>同理，可以增加二级索引</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnMJe"><img src="https://z3.ax1x.com/2021/04/15/cRnMJe.png" alt="cRnMJe.png"></a></p>
+<p>五级索引</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRnQRH"><img src="https://z3.ax1x.com/2021/04/15/cRnQRH.png" alt="cRnQRH.png"></a></p>
+<p>假设原始链表有n个节点且为2的整数幂，建有k级索引，k级索引有2个节点，则</p>
+<table>
+<thead>
+<tr>
+<th align="center">索引级数k</th>
+<th align="center">k级索引节点数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">n</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">n/2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">n/4</td>
+</tr>
+<tr>
+<td align="center">h</td>
+<td align="center">n/2^h</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+<p>则<br>$$<br>n/2^k=2<br>$$<br>可以推出<br>$$<br>k=log_2{n}-1<br>$$<br>每层索引需要遍历的节点个数为3，那么一共要走3k个节点，其时间复杂度为<br>$$<br>O(3*log_2{n}-3)<br>$$<br>去掉常数为：<br>$$<br>O(log_2{n})<br>$$<br>更加详细的介绍详见：</p>
+<h3 id="跳表工程应用"><a href="#跳表工程应用" class="headerlink" title="跳表工程应用"></a>跳表工程应用</h3><p>Redis</p>
+<p>详见：</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/03/31/%E4%B8%80%E7%82%B9%E6%84%9F%E6%82%9F/">一点感悟</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
