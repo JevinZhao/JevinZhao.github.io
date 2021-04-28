@@ -16,7 +16,7 @@ categories: Java
 
 ### Reading Guide**✍**
 
-**💦**[基础程序设计结构]()
+**💦**[基础程序设计结构](http://jevinzhao.com/2021/04/28/Jevin%E5%AD%A6Java-%E5%9F%BA%E7%A1%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/)
 
 **💦**[对象与类]()
 
