@@ -121,11 +121,11 @@ i--：使用变量原来的值进行操作，操作完后，再减1
 
 三元运算符：`condition ? expression1 : expression2`
 
-逻辑运算符：`expression1 && expression2`，`expression1 ||expression2`
+逻辑运算符：`expression1 && expression2`,`expression1 ||expression2`
 
 #### 位运算符
 
-`& ("and")`， `| ("or")`,    `^("XOr")` ,    `~ ("not")`
+`& ("and")`, `| ("or")`,    `^("XOr")` ,    `~ ("not")`
 有`>>`和`<<`运算符将位模式左移或右移
 
 #### 运算符的优先级
