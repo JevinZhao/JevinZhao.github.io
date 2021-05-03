@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>Java字符串总结 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java字符串总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">五月 3, 2021&nbsp;&nbsp;21:19:19</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Java字符串总结🦠"><a href="#Java字符串总结🦠" class="headerlink" title="Java字符串总结🦠"></a>Java字符串总结<strong>🦠</strong></h2><h3 id="1-字符串的用法总览（常用API）🌴"><a href="#1-字符串的用法总览（常用API）🌴" class="headerlink" title="1.字符串的用法总览（常用API）🌴"></a>1.字符串的用法总览（常用API）<strong>🌴</strong></h3><p>String类在java.lang包中，java使用String类创建一个字符串变量，字符串变量属于对象。java把String类声明的final类，不能有子类。String类对象创建后不能修改，由0或多个字符组成，包含在一对双引号之间。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">java.lang.String  </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">charAt</span> <span class="params">(<span class="keyword">int</span> index)</span>     返回index所指定的字符  </span></span><br><span class="line"><span class="function">String <span class="title">concat</span><span class="params">(String str)</span>   将两字符串连接  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">endsWith</span><span class="params">(String str)</span>    测试字符串是否以str结尾  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span>  比较两对象  </span></span><br><span class="line"><span class="function"><span class="keyword">char</span>[] getBytes     将字符串转换成字符数组返回  </span></span><br><span class="line"><span class="function"><span class="keyword">char</span>[] <span class="title">getBytes</span><span class="params">(String str)</span>     将指定的字符串转成制服数组返回  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String str)</span>  测试字符串是否以str开始  </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span>    返回字符串的长度  </span></span><br><span class="line"><span class="function">String <span class="title">replace</span><span class="params">(<span class="keyword">char</span> old ,<span class="keyword">char</span> new)</span>  将old用new替代  </span></span><br><span class="line"><span class="function"><span class="keyword">char</span>[] toCharArray  将字符串转换成字符数组  </span></span><br><span class="line"><span class="function">String <span class="title">toLowerCase</span><span class="params">()</span>    将字符串内的字符改写成小写  </span></span><br><span class="line"><span class="function">String <span class="title">toUpperCase</span><span class="params">()</span>    将字符串内的字符改写成大写  </span></span><br><span class="line"><span class="function">String <span class="title">valueOf</span><span class="params">(Boolean b)</span>   将布尔方法b的内容用字符串表示  </span></span><br><span class="line"><span class="function">String <span class="title">valueOf</span><span class="params">(<span class="keyword">char</span> ch)</span>     将字符ch的内容用字符串表示  </span></span><br><span class="line"><span class="function">String <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> index)</span>   将数字index的内容用字符串表示  </span></span><br><span class="line"><span class="function">String <span class="title">valueOf</span><span class="params">(<span class="keyword">long</span> l)</span>  将长整数字l的内容用字符串表示  </span></span><br><span class="line"><span class="function">String <span class="title">substring</span><span class="params">(int1,int2)</span>     取出字符串内第int1位置到int2的字符串  </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-构造方法🌴"><a href="#2-构造方法🌴" class="headerlink" title="2.构造方法🌴"></a>2.构造方法<strong>🌴</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//直接初始化</span></span><br><span class="line">String str = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"><span class="comment">//使用带参构造方法初始化</span></span><br><span class="line"><span class="keyword">char</span> data[] = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">String str1 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String str2 = <span class="keyword">new</span> String(str);</span><br><span class="line">String str3 = <span class="keyword">new</span> String(data);</span><br><span class="line">System.out.println(str);</span><br><span class="line">System.out.println(str1);</span><br><span class="line">System.out.println(str2);</span><br><span class="line">System.out.println(str3);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-求字符串长度和某一位置字符🌴"><a href="#3-求字符串长度和某一位置字符🌴" class="headerlink" title="3.求字符串长度和某一位置字符🌴"></a>3.求字符串长度和某一位置字符<strong>🌴</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">&quot;abcdef&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> length = str.length();</span><br><span class="line"><span class="keyword">char</span> ch = str.charAt(<span class="number">4</span>);<span class="comment">//index 从0 开始，取第五个字符</span></span><br><span class="line">System.out.println(length);</span><br><span class="line">System.out.println(ch);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-提取子串🌴"><a href="#4-提取子串🌴" class="headerlink" title="4.提取子串🌴"></a>4.提取子串<strong>🌴</strong></h3><p>用String的substring方法可以提取子串，该方法有两个参数形式：</p>
+<p><code>public String substring(int beginIndex)</code></p>
+<p>该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回。</p>
+<p><code>public String substring(int beginIndex, int endIndex)</code> </p>
+<p>该方法从beginIndex位置起，从当前字符串中取出到endIndex-1位置的字符作为一个新的字符串返回。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="keyword">new</span> String(<span class="string">&quot;abcdef&quot;</span>);</span><br><span class="line">String str2 = str1.substring(<span class="number">2</span>);<span class="comment">//index 从0 开始</span></span><br><span class="line">String str3 = str1.substring(<span class="number">2</span>,<span class="number">5</span>);</span><br><span class="line">System.out.println(str2);<span class="comment">//str2 = &quot;cdef&quot;</span></span><br><span class="line">System.out.println(str3);<span class="comment">//str3 = &quot;cde&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-字符串比较🌴"><a href="#5-字符串比较🌴" class="headerlink" title="5.字符串比较🌴"></a>5.字符串比较<strong>🌴</strong></h3><p><code>public int compareTo(String anotherString)</code></p>
+<p>该方法是对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系。若当前对象比参数大则返回正整数，反之返回负整数，相等返回0</p>
+<p><code>public int compareToIgnoreCase(String anotherString)</code></p>
+<p>与compareTo方法相似，但忽略大小写</p>
+<p><code>public boolean equals(Object anotherObject)</code></p>
+<p>比较当前字符串和参数字符串，在两个字符串相等的时候返回true，否则返回false</p>
+<p><code>public boolean equalsIgnoreCase</code>(String anotherString)</p>
+<p>与equals方法相似，但忽略大小写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">&quot;ABC&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> a = str1.compareTo(str2);<span class="comment">//a&gt;0</span></span><br><span class="line"><span class="keyword">int</span> b = str1.compareToIgnoreCase(str2);<span class="comment">//b=0</span></span><br><span class="line"><span class="keyword">boolean</span> c = str1.equals(str2);<span class="comment">//c=false</span></span><br><span class="line"><span class="keyword">boolean</span> d = str1.equalsIgnoreCase(str2);<span class="comment">//d=true</span></span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br><span class="line">System.out.println(c);</span><br><span class="line">System.out.println(d);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-字符串拼接🌴"><a href="#6-字符串拼接🌴" class="headerlink" title="6.字符串拼接🌴"></a>6.字符串拼接<strong>🌴</strong></h3><p><code>public String concat(String str)</code></p>
+<p>将参数中的字符串str连接到当前字符串的后面，效果等价于”+”</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;aa&quot;</span>.concat(<span class="string">&quot;bb&quot;</span>).concat(<span class="string">&quot;cc&quot;</span>);</span><br><span class="line"><span class="comment">//相当于String str = &quot;aa&quot;+&quot;bb&quot;+&quot;cc&quot;;</span></span><br><span class="line">System.out.println(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-字符串查找🌴"><a href="#7-字符串查找🌴" class="headerlink" title="7.字符串查找🌴"></a>7.字符串查找<strong>🌴</strong></h3><p><code>public int indexOf(int ch/String str)</code></p>
+<p>用于查找当前字符串中字符或子串，返回字符或子串在当前字符串中从左边起首次出现的位置，若没有出现则返回-1。</p>
+<p><code>public int indexOf(int ch/String str, int fromIndex)</code></p>
+<p>该方法与第一种类似，区别在于该方法从fromIndex位置向后查找。</p>
+<p><code>public int lastIndexOf(int ch/String str)</code></p>
+<p>该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。</p>
+<p> <code>public int lastIndexOf(int ch/String str, int fromIndex)</code></p>
+<p>该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;I really miss you !&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a = str.indexOf(<span class="string">&#x27;a&#x27;</span>);<span class="comment">//a = 4</span></span><br><span class="line"><span class="keyword">int</span> b = str.indexOf(<span class="string">&quot;really&quot;</span>);<span class="comment">//b = 2</span></span><br><span class="line"><span class="keyword">int</span> c = str.indexOf(<span class="string">&quot;gg&quot;</span>,<span class="number">2</span>);<span class="comment">//c = -1</span></span><br><span class="line"><span class="keyword">int</span> d = str.lastIndexOf(<span class="string">&#x27;s&#x27;</span>);<span class="comment">//d = 12</span></span><br><span class="line"><span class="keyword">int</span> e = str.lastIndexOf(<span class="string">&#x27;s&#x27;</span>,<span class="number">11</span>);<span class="comment">//e = 11</span></span><br><span class="line"><span class="comment">//注意所有索引位置都是从前向后计算的，lastIndexOf只是方向是从后向前</span></span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br><span class="line">System.out.println(c);</span><br><span class="line">System.out.println(d);</span><br><span class="line">System.out.println(e);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-字符串替换🌴"><a href="#8-字符串替换🌴" class="headerlink" title="8.字符串替换🌴"></a>8.字符串替换<strong>🌴</strong></h3><p><code>public String replace(char oldChar, char newChar)</code></p>
+<p>用字符newChar替换当前字符串中所有的oldChar字符，并返回一个新的字符串。</p>
+<p><code>public String replaceFirst(String regex, String replacement)</code></p>
+<p>该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。</p>
+<p><code>public String replaceAll(String regex, String replacement)</code></p>
+<p>该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;asdzxcasd&quot;</span>;</span><br><span class="line">String str1 = str.replace(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;g&#x27;</span>);<span class="comment">//str1 = &quot;gsdzxcgsd&quot;</span></span><br><span class="line">String str2 = str.replace(<span class="string">&quot;asd&quot;</span>,<span class="string">&quot;fgh&quot;</span>);<span class="comment">//str2 = &quot;fghzxcfgh&quot;</span></span><br><span class="line">String str3 = str.replaceFirst(<span class="string">&quot;asd&quot;</span>,<span class="string">&quot;fgh&quot;</span>);<span class="comment">//str3 = &quot;fghzxcasd&quot;</span></span><br><span class="line">String str4 = str.replaceAll(<span class="string">&quot;asd&quot;</span>,<span class="string">&quot;fgh&quot;</span>);<span class="comment">//str4 = &quot;fghzxcfgh&quot;</span></span><br><span class="line">System.out.println(str1);</span><br><span class="line">System.out.println(str2);</span><br><span class="line">System.out.println(str3);</span><br><span class="line">System.out.println(str4);</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-大小写转换🌴"><a href="#9-大小写转换🌴" class="headerlink" title="9.大小写转换🌴"></a>9.大小写转换<strong>🌴</strong></h3><p><code>public String toLowerCase()</code></p>
+<p>返回将当前字符串中所有字符转换成小写后的新串</p>
+<p> <code>public String toUpperCase()</code></p>
+<p>返回将当前字符串中所有字符转换成大写后的新串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">&quot;abCD&quot;</span>);</span><br><span class="line">String str1 = str.toLowerCase();<span class="comment">//str1 = &quot;abcd&quot;</span></span><br><span class="line">String str2 = str.toUpperCase();<span class="comment">//str2 = &quot;ABCD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-其他方法🌴"><a href="#10-其他方法🌴" class="headerlink" title="10.其他方法🌴"></a>10.其他方法<strong>🌴</strong></h3><p><code>String trim()</code></p>
+<p>截去字符串两端的空格，但对于中间的空格不处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot; a bc &quot;</span>;</span><br><span class="line">String str1 = str.trim();</span><br><span class="line"><span class="keyword">int</span> a = str.length();<span class="comment">//a = 6</span></span><br><span class="line"><span class="keyword">int</span> b = str1.length();<span class="comment">//b = 4</span></span><br></pre></td></tr></table></figure>
+
+<p><code>boolean statWith(String prefix)</code>或<code>boolean endWith(String suffix)</code></p>
+<p>用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;abcdef&quot;</span>;</span><br><span class="line"><span class="keyword">boolean</span> a = str.statWith(<span class="string">&quot;ab&quot;</span>);<span class="comment">//a = true</span></span><br><span class="line"><span class="keyword">boolean</span> b = str.endWith(<span class="string">&quot;ef&quot;</span>);<span class="comment">//b = true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>contains(String str)</code></p>
+<p>判断参数s是否被包含在字符串中，并返回一个布尔类型的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;abcdef&quot;</span>;</span><br><span class="line">str.contains(<span class="string">&quot;ab&quot;</span>);<span class="comment">//true</span></span><br><span class="line">str.contains(<span class="string">&quot;gh&quot;</span>);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p><code>String[] split(String str)</code></p>
+<p>将str作为分隔符进行字符串分解，分解后的字字符串在字符串数组中返回</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;abc def ghi&quot;</span>;</span><br><span class="line">String[] str1 = str.split(<span class="string">&quot; &quot;</span>);<span class="comment">//str1[0] = &quot;abc&quot;;str1[1] = &quot;def&quot;;str1[2] = &quot;ghi&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-类型转换🌴"><a href="#11-类型转换🌴" class="headerlink" title="11.类型转换🌴"></a>11.类型转换<strong>🌴</strong></h3><ul>
+<li><p>字符串转基本类型</p>
+<p><code>public static byte parseByte(String s)</code><br><code>public static short parseShort(String s)</code><br><code>public static short parseInt(String s)</code><br><code>public static long parseLong(String s)</code><br><code>public static float parseFloat(String s)</code><br><code>public static double parseDouble(String s)</code></p>
+</li>
+<li><p>基本类型转字符串</p>
+<p><code>public static String valueOf(char data[])</code><br><code>public static String valueOf(char data[], int offset, int count)</code><br><code>public static String valueOf(boolean b)</code><br><code>public static String valueOf(char c)</code><br><code>public static String valueOf(int i)</code><br><code>public static String valueOf(long l)</code><br><code>public static String valueOf(float f)</code><br><code>public static String valueOf(double d)</code></p>
+</li>
+</ul>
+<h3 id="12-String类源码🌴"><a href="#12-String类源码🌴" class="headerlink" title="12.String类源码🌴"></a>12.String类源码<strong>🌴</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** The value is used for character storage. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** use serialVersionUID from JDK 1.0.2 for interoperability */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">6849794470754667710L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Class String is special cased within the Serialization Stream Protocol.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * A String instance is written into an ObjectOutputStream according to</span></span><br><span class="line"><span class="comment">     * &lt;a href=&quot;&#123;<span class="doctag">@docRoot</span>&#125;/../platform/serialization/spec/output.html&quot;&gt;</span></span><br><span class="line"><span class="comment">     * Object Serialization Specification, Section 6.2, &quot;Stream Elements&quot;&lt;/a&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ObjectStreamField[] serialPersistentFields =</span><br><span class="line">        <span class="keyword">new</span> ObjectStreamField[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Initializes a newly created &#123;<span class="doctag">@code</span> String&#125; object so that it represents</span></span><br><span class="line"><span class="comment">     * an empty character sequence.  Note that use of this constructor is</span></span><br><span class="line"><span class="comment">     * unnecessary since Strings are immutable.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = <span class="string">&quot;&quot;</span>.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Initializes a newly created &#123;<span class="doctag">@code</span> String&#125; object so that it represents</span></span><br><span class="line"><span class="comment">     * the same sequence of characters as the argument; in other words, the</span></span><br><span class="line"><span class="comment">     * newly created string is a copy of the argument string. Unless an</span></span><br><span class="line"><span class="comment">     * explicit copy of &#123;<span class="doctag">@code</span> original&#125; is needed, use of this constructor is</span></span><br><span class="line"><span class="comment">     * unnecessary since Strings are immutable.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  original</span></span><br><span class="line"><span class="comment">     *         A &#123;<span class="doctag">@code</span> String&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(String original)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = original.value;</span><br><span class="line">        <span class="keyword">this</span>.hash = original.hash;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>String类是final类，也即意味着String类不能被继承，并且它的成员方法都默认为final方法。在Java中，被final修饰的类是不允许被继承的，并且该类中的成员方法都默认为final方法。</li>
+<li>String类其实是通过char数组来保存字符串的。</li>
+<li><strong>String对象一旦被创建就是固定不变的了，对String对象的任何改变都不影响到原对象，相关的任何change操作都会生成新的对象</strong></li>
+<li>关于字符串常量池介绍详见：<strong>🌹</strong><a href="">字符串常量池</a></li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/04/28/Jevin%E5%AD%A6Java-%E5%9F%BA%E7%A1%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">Jevin学Java-基础程序设计结构</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
