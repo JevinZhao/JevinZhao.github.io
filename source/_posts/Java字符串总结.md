@@ -313,5 +313,5 @@ public final class String
 1. String类是final类，也即意味着String类不能被继承，并且它的成员方法都默认为final方法。在Java中，被final修饰的类是不允许被继承的，并且该类中的成员方法都默认为final方法。
 2. String类其实是通过char数组来保存字符串的。
 3. **String对象一旦被创建就是固定不变的了，对String对象的任何改变都不影响到原对象，相关的任何change操作都会生成新的对象**
-4. 关于字符串常量池介绍详见：**🌹**[字符串常量池]()
+4. 关于字符串常量池介绍详见：**🌹**[字符串常量池](http://jevinzhao.com/2021/05/07/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%AD%97%E7%AC%A6%E4%B8%B2/)
 
