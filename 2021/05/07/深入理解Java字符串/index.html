@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>深入理解Java字符串 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">深入理解Java字符串</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">五月 7, 2021&nbsp;&nbsp;8:21:36</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="深入理解字符串常量池🥇"><a href="#深入理解字符串常量池🥇" class="headerlink" title="深入理解字符串常量池🥇"></a>深入理解字符串常量池🥇</h2><h3 id="Java内存区域🏆"><a href="#Java内存区域🏆" class="headerlink" title="Java内存区域🏆"></a>Java内存区域🏆</h3><p>String有两种赋值方式，第一种是通过“<strong>字面量</strong>”赋值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;Hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p> 第二种是通过<strong>new</strong>关键字创建新对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 要弄清楚这两种方式的区别，首先要知道他们在内存中的存储位置。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zlRK"><img src="https://z3.ax1x.com/2021/05/07/g3zlRK.png" alt="g3zlRK.png"></a></p>
+<p>我们平时所说的内存就是图中的<strong>运行时数据区（Runtime Data Area）</strong>，其中与字符串的创建有关的是<strong>方法区（Method Area）</strong>、<strong>堆区（Heap Area）</strong>和<strong>栈区（Stack Area）</strong>。</p>
+<ol>
+<li><strong>方法区</strong>：存储类信息、常量、静态变量。全局共享。</li>
+<li><strong>堆区</strong>：存放对象和数组。全局共享。</li>
+<li><strong>栈区</strong>：基本数据类型、对象的引用都存放在这。线程私有。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3ztZd"><img src="https://z3.ax1x.com/2021/05/07/g3ztZd.png" alt="g3ztZd.png"></a></p>
+<p>每当一个方法被执行时就会在栈区中创建一个<strong>栈帧（Stack Frame）</strong>，基本数据类型和对象引用就存在栈帧中<strong>局部变量表（Local Variables）</strong>。</p>
+<p>当一个类被加载之后，类信息就存储在非堆的方法区中。在方法区中，有一块叫做<strong>运行时常量池（Runtime Constant Pool）</strong>,它是每个类私有的，每个class文件中的“常量池”被加载器加载之后就映射存放在这，后面会说到这一点。</p>
+<p>和String最相关的是<strong>字符串池（String Pool）</strong>，其位置在方法区上面的<strong>驻留字符串（Interned Strings）的位置</strong>，之前一直把它和运行时常量池搞混，其实是两个完全不同的存储区域，字符串常量池是全局共享的。字符串调用String.intern()方法后，其引用就存放在String Pool中。</p>
+<h3 id="两种创建方式在内存中的区别🏆"><a href="#两种创建方式在内存中的区别🏆" class="headerlink" title="两种创建方式在内存中的区别🏆"></a>两种创建方式在内存中的区别🏆</h3><p>了解了这些概念，下面来说说究竟两种字符串创建方式有何区别。</p>
+<p>下面的Test类，在main方法里以“字面量”赋值的方式给字符串str赋值为“Hello”。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        String str = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Test.java文件编译后得到.class文件，里面包含了类的信息，其中有一块叫做<strong>常量池（Constant Pool）</strong>的区域，.class常量池和内存中的常量池并不是一个东西。</p>
+<p>.class文件常量池主要存储的就包括<strong>字面量</strong>，字面量包括类中定义的常量，由于String是不可变的，所以字符串“Hello”就存放在这。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3z0Rf"><img src="https://z3.ax1x.com/2021/05/07/g3z0Rf.png" alt="g3z0Rf.png"></a></p>
+<p>当程序用到Test类时，Test.class被解析到内存中的方法区。.class文件中的常量池信息会被加载到<strong>运行时常量池</strong>，但String不是。</p>
+<p>例子中“Hello”会在堆区中创建一个对象，同时会在<strong>字符串池（String Pool）</strong>存放一个<strong>它的引用</strong>，如下图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zrQS"><img src="https://z3.ax1x.com/2021/05/07/g3zrQS.png" alt="g3zrQS.png"></a></p>
+<p><strong>此时只是Test类刚刚被加载，主函数中的str并没有被创建，而“Hello”对象已经创建在于堆中。</strong></p>
+<p>当主线程开始创建str变量时，虚拟机会去字符串池中找是否有equals(“Hello”)的String，如果相等就把在字符串池中“Hello”的<strong>引用复制给str</strong>。如果找不到相等的字符串，就会在堆中新建一个对象，同时把引用驻留在字符串池，再把引用赋给str。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zyLQ"><img src="https://z3.ax1x.com/2021/05/07/g3zyLQ.png" alt="g3zyLQ.png"></a></p>
+<p>当用字面量赋值的方法创建字符串时，无论创建多少次，只要字符串的值相同，它们所指向的都是堆中的同一个对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        String str1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str2 = “Hello”;</span><br><span class="line">        String str3 = “Hello”;</span><br><span class="line">        </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zcZj"><img src="https://z3.ax1x.com/2021/05/07/g3zcZj.png" alt="g3zcZj.png"></a></p>
+<p>当利用<strong>new</strong>关键字去创建字符串时，前面加载的过程是一样的，只是在运行时无论字符串池中有没有与当前值相等的对象引用，都会在堆中新开辟一块内存，创建一个对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        String str1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str2 = “Hello”;</span><br><span class="line">        String str3 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">        </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3z2on"><img src="https://z3.ax1x.com/2021/05/07/g3z2on.png" alt="g3z2on.png"></a></p>
+<h3 id="解释不同的例子🏆"><a href="#解释不同的例子🏆" class="headerlink" title="解释不同的例子🏆"></a>解释不同的例子🏆</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String s2 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String s3 = <span class="string">&quot;Hel&quot;</span> + <span class="string">&quot;lo&quot;</span>;</span><br><span class="line">String s4 = <span class="string">&quot;Hel&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;lo&quot;</span>);</span><br><span class="line">String s5 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">String s6 = s5.intern();</span><br><span class="line">String s7 = <span class="string">&quot;H&quot;</span>;</span><br><span class="line">String s8 = <span class="string">&quot;ello&quot;</span>;</span><br><span class="line">String s9 = s7 + s8;</span><br><span class="line">          </span><br><span class="line">System.out.println(s1 == s2);  <span class="comment">// true</span></span><br><span class="line">System.out.println(s1 == s3);  <span class="comment">// true</span></span><br><span class="line">System.out.println(s1 == s4);  <span class="comment">// false</span></span><br><span class="line">System.out.println(s1 == s9);  <span class="comment">// false</span></span><br><span class="line">System.out.println(s4 == s5);  <span class="comment">// false</span></span><br><span class="line">System.out.println(s1 == s6);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>s1</strong>在创建对象的同时，在字符串池中也创建了其对象的引用。</p>
+<p>由于<strong>s2</strong>也是利用字面量创建，所以会先去字符串池中寻找是否有相等的字符串，显然<strong>s1</strong>已经帮他创建好了，它可以直接使用其引用。那么s1和s2所指向的都是同一个地址，所以<strong>s1==s2</strong>。</p>
+<p><strong>s3</strong>是一个字符串拼接操作，参与拼接的部分都是字面量，编译器会进行优化，在编译时s3就变成“Hello”了，所以<strong>s1==s3</strong>。</p>
+<p><strong>s4</strong>虽然也是拼接，但“lo”是通过<strong>new</strong>关键字创建的，在编译期无法知道它的地址，所以不能像s3一样优化。所以必须要等到运行时才能确定，必然新对象的地址和前面的不同。</p>
+<p>同理，<strong>s9</strong>由<strong>两个变量拼接</strong>，<strong>编译期也不知道他们的具体位置</strong>，不会做出优化。</p>
+<p><strong>s5</strong>是new出来的，在堆中的地址肯定和s4不同。</p>
+<p><strong>s6</strong>利用intern()方法得到了s5在<strong>字符串池的引用</strong>，并不是s5本身的地址。由于它们在字符串池的引用都指向同一个“Hello”对象，自然<strong>s1==s6</strong>。</p>
+<p> 总结一下：</p>
+<ul>
+<li><strong>字面量创建字符串会先在字符串池中找，看是否有相等的对象，没有的话就在堆中创建，把地址驻留在字符串池；有的话则直接用池中的引用，避免重复创建对象。</strong></li>
+<li><strong>new关键字创建时，前面的操作和字面量创建一样，只不过最后在运行时会创建一个新对象，变量所引用的都是这个新对象的地址。</strong></li>
+</ul>
+<p> 由于不同版本的JDK内存会有些变化，JDK1.6字符串常量池在永久代，1.7移到了堆中，1.8用元空间代替了永久代。但是基本对上面的结论没有影响，思想是一样的。</p>
+<h3 id="intern-方法🏆"><a href="#intern-方法🏆" class="headerlink" title="intern()方法🏆"></a>intern()方法🏆</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns a canonical representation for the string object.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * A pool of strings, initially empty, is maintained privately by the</span></span><br><span class="line"><span class="comment">     * class &#123;<span class="doctag">@code</span> String&#125;.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * When the intern method is invoked, if the pool already contains a</span></span><br><span class="line"><span class="comment">     * string equal to this &#123;<span class="doctag">@code</span> String&#125; object as determined by</span></span><br><span class="line"><span class="comment">     * the &#123;<span class="doctag">@link</span> #equals(Object)&#125; method, then the string from the pool is</span></span><br><span class="line"><span class="comment">     * returned. Otherwise, this &#123;<span class="doctag">@code</span> String&#125; object is added to the</span></span><br><span class="line"><span class="comment">     * pool and a reference to this &#123;<span class="doctag">@code</span> String&#125; object is returned.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * It follows that for any two strings &#123;<span class="doctag">@code</span> s&#125; and &#123;<span class="doctag">@code</span> t&#125;,</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@code</span> s.intern() == t.intern()&#125; is &#123;<span class="doctag">@code</span> true&#125;</span></span><br><span class="line"><span class="comment">     * if and only if &#123;<span class="doctag">@code</span> s.equals(t)&#125; is &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * All literal strings and string-valued constant expressions are</span></span><br><span class="line"><span class="comment">     * interned. String literals are defined in section 3.10.5 of the</span></span><br><span class="line"><span class="comment">     * &lt;cite&gt;The Java™ Language Specification&lt;/cite&gt;.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  a string that has the same contents as this string, but is</span></span><br><span class="line"><span class="comment">     *          guaranteed to be from a pool of unique strings.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">intern</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法是一个本地方法，注释中描述得很清楚：“如果常量池中存在当前字符串，就会直接返回当前字符串；如果常量池中没有此字符串，会将此字符串放入常量池中后，再返回”。</p>
+<p>由于上面提到JDK1.6之后，字符串常量池在内存中的位置发生了变化，所以intern()方法在不同版本的JDK中也有所差别。</p>
+<p>来看下面的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    s.intern();</span><br><span class="line">    String s2 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    System.out.println(s == s2);</span><br><span class="line"></span><br><span class="line">    String s3 = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>) + <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    s3.intern();</span><br><span class="line">    String s4 = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">    System.out.println(s3 == s4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在JDK1.6中的运行结果是<strong>false false</strong>，而在1.7中结果是<strong>false true</strong>。</p>
+<p>将intern()语句下移一行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    String s2 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    s.intern();</span><br><span class="line">    System.out.println(s == s2);</span><br><span class="line"></span><br><span class="line">    String s3 = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>) + <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    String s4 = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">    s3.intern();</span><br><span class="line">    System.out.println(s3 == s4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在JDK1.6中的运行结果是<strong>false false</strong>，在1.7中结果也是<strong>false false</strong>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zhWV"><img src="https://z3.ax1x.com/2021/05/07/g3zhWV.jpg" alt="g3zhWV.jpg"></a></p>
+<p>图中绿色线条代表string对象的内容指向，黑色线条代表地址指向。</p>
+<p>JDK1.6中的intern()方法只是返回常量池中的引用，上面说过，常量池中的引用所指向的对象和new出来的对象并不是一个，所以他们的地址自然不相同。</p>
+<p>接着来说一下<strong>JDK1.7</strong>：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3z4zT"><img src="https://z3.ax1x.com/2021/05/07/g3z4zT.jpg" alt="g3z4zT.jpg"></a></p>
+<p>再贴一下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    s.intern();</span><br><span class="line">    String s2 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    System.out.println(s == s2);</span><br><span class="line"></span><br><span class="line">    String s3 = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>) + <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    s3.intern();</span><br><span class="line">    String s4 = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">    System.out.println(s3 == s4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建s3生成了两个最终对象（<strong>不考虑两个new String(“1”)，常量池中也没有“11”</strong>），一个是<strong>s3</strong>，另一个是池中的<strong>“1”</strong>。如果在1.6中，s3调用intern()方法，则先在常量池中寻找是否有等于“11”的对象，本例中自然是没有，然后会在堆中创建一个“11”的对象，并在常量池中存储它的引用并返回。然而在1.7中调用intern()，如果这个字符串在常量池中是<strong>第一次出现</strong>，则不会重新创建对象，直接返回它在堆中的引用。在本例中，s4和s3指向的都是在堆中的那个对象，所以s3和s4的地址相等。</p>
+<p>由于<strong>s</strong>是new出来的，所以会在常量池和堆中创建两个不同的对象，s.intern()后，发现“1”并不是第一次出现在常量池了，所以接下来就和之前没有区别了。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g3zoyF"><img src="https://z3.ax1x.com/2021/05/07/g3zoyF.jpg" alt="g3zoyF.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    String s2 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    s.intern();</span><br><span class="line">    System.out.println(s == s2);</span><br><span class="line"></span><br><span class="line">    String s3 = <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>) + <span class="keyword">new</span> String(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    String s4 = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">    s3.intern();</span><br><span class="line">    System.out.println(s3 == s4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将intern()语句下移一行后，执行顺序发生改变，执行到intern()时，字符串常量池已经存在“1”和“11”了，并不是第一次出现，字面量对象依然指向的是常量池，所以字面量创建的对象和new的对象地址一定是不同的。</p>
+<h3 id="Reference🏆"><a href="#Reference🏆" class="headerlink" title="Reference🏆"></a>Reference🏆</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29884421/answer/113785601">java用这样的方式生成字符串：String str = “Hello”，到底有没有在堆中创建对象？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/iyangyuan/p/4631696.html">触摸java常量池</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html">深入解析String#intern</a></p>
+<p><a target="_blank" rel="noopener" href="https://javaranch.com/journal/200409/ScjpTipLine-StringsLiterally.html">Strings, Literally</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/justcooooode/p/7603381.html">理解Java字符串常量池与intern()方法</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/05/03/Java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/">Java字符串总结</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
