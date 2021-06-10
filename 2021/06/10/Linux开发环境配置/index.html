@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>Linux开发环境配置 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Linux开发环境配置</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">六月 10, 2021&nbsp;&nbsp;8:17:54</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Linux/">Linux</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Linux操作系统安装"><a href="#Linux操作系统安装" class="headerlink" title="Linux操作系统安装"></a>Linux操作系统安装</h2><h3 id="安装VMware虚拟机"><a href="#安装VMware虚拟机" class="headerlink" title="安装VMware虚拟机"></a>安装VMware虚拟机</h3><p>前往官网<a target="_blank" rel="noopener" href="https://my.vmware.com/cn/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/15_0">下载</a>（破解文件百度）</p>
+<p>点击安装，一路next即可</p>
+<h3 id="虚拟机中安装CentOS7系统"><a href="#虚拟机中安装CentOS7系统" class="headerlink" title="虚拟机中安装CentOS7系统"></a>虚拟机中安装CentOS7系统</h3><p>打开虚拟机，点击新建虚拟机</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RRUij"><img src="https://z3.ax1x.com/2021/06/10/2RRUij.png" alt="2RRUij.png"></a></p>
+<p>新建虚拟机向导，选择“典型”</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RRDyV"><img src="https://z3.ax1x.com/2021/06/10/2RRDyV.png" alt="2RRDyV.png"></a></p>
+<p>选择要安装的CentOS7的镜像文件</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RR2FJ"><img src="https://z3.ax1x.com/2021/06/10/2RR2FJ.png" alt="2RR2FJ.png"></a></p>
+<p>填写虚拟机名称以及安装位置</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RR5y6"><img src="https://z3.ax1x.com/2021/06/10/2RR5y6.png" alt="2RR5y6.png"></a></p>
+<p>设置磁盘容量，以及是否拆分磁盘</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RRHTe"><img src="https://z3.ax1x.com/2021/06/10/2RRHTe.png" alt="2RRHTe.png"></a></p>
+<p>自定义硬件设置</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RRLYd"><img src="https://z3.ax1x.com/2021/06/10/2RRLYd.png" alt="2RRLYd.png"></a></p>
+<p>可以自定义系统内存，处理器个数，以及网络适配器（要设置成NAT）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RRvlt"><img src="https://z3.ax1x.com/2021/06/10/2RRvlt.png" alt="2RRvlt.png"></a></p>
+<p>完成</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RW90S"><img src="https://z3.ax1x.com/2021/06/10/2RW90S.png" alt="2RW90S.png"></a></p>
+<p>启动虚拟机，安装CentOS 7 系统</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWikQ"><img src="https://z3.ax1x.com/2021/06/10/2RWikQ.png" alt="2RWikQ.png"></a></p>
+<p>进入语言设置界面，选择中文</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWZ60"><img src="https://z3.ax1x.com/2021/06/10/2RWZ60.png" alt="2RWZ60.png"></a></p>
+<p>继续，进入安装信息摘要界面，可以选择安装源（如果之前没选择镜像文件，这里可以选择），软件选择（按需选择，可以选择“最小安装”，或者“基本网页服务器”）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWJ6x"><img src="https://z3.ax1x.com/2021/06/10/2RWJ6x.png" alt="2RWJ6x.png"></a></p>
+<p>点击安装位置（默认是自动分区）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWNnK"><img src="https://z3.ax1x.com/2021/06/10/2RWNnK.png" alt="2RWNnK.png"></a></p>
+<p>选择“我要配置分区”，点击“完成”</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWBhd"><img src="https://z3.ax1x.com/2021/06/10/2RWBhd.png" alt="2RWBhd.png"></a></p>
+<p>进入手动分区配置界面，选择标准分区，再选择“+”添加新的挂载点</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWs1I"><img src="https://z3.ax1x.com/2021/06/10/2RWs1I.png" alt="2RWs1I.png"></a></p>
+<p>这里我们一般添加3个挂载点</p>
+<p>/boot  :用于系统启动时的配置文件，大小分配200M</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RW6jP"><img src="https://z3.ax1x.com/2021/06/10/2RW6jP.png" alt="2RW6jP.png"></a></p>
+<p>swap  ：交换区大小，一般为内存的2倍</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RW2B8"><img src="https://z3.ax1x.com/2021/06/10/2RW2B8.png" alt="2RW2B8.png"></a></p>
+<p>/  :其他区，大小为剩余硬盘容量</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWbuV"><img src="https://z3.ax1x.com/2021/06/10/2RWbuV.png" alt="2RWbuV.png"></a></p>
+<p>完成分区</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWLHU"><img src="https://z3.ax1x.com/2021/06/10/2RWLHU.png" alt="2RWLHU.png"></a></p>
+<p>接收更改</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RWv4J"><img src="https://z3.ax1x.com/2021/06/10/2RWv4J.png" alt="2RWv4J.png"></a></p>
+<p>点击“网络和主机名”，进入网络配置与主机名设置，（记住IP地址，子网掩码，默认路由）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfS3R"><img src="https://z3.ax1x.com/2021/06/10/2RfS3R.png" alt="2RfS3R.png"></a></p>
+<p>开始安装</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfAED"><img src="https://z3.ax1x.com/2021/06/10/2RfAED.png" alt="2RfAED.png"></a></p>
+<p>设置管理员密码，太短要点2下“完成”</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfV4H"><img src="https://z3.ax1x.com/2021/06/10/2RfV4H.png" alt="2RfV4H.png"></a></p>
+<p>等待安装即可</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2Rfuvt"><img src="https://z3.ax1x.com/2021/06/10/2Rfuvt.png" alt="2Rfuvt.png"></a><br>重启</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfraF"><img src="https://z3.ax1x.com/2021/06/10/2RfraF.png" alt="2RfraF.png"></a></p>
+<p>登录</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfWKx"><img src="https://z3.ax1x.com/2021/06/10/2RfWKx.png" alt="2RfWKx.png"></a></p>
+<p>系统安装完成</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RfHGd"><img src="https://z3.ax1x.com/2021/06/10/2RfHGd.png" alt="2RfHGd.png"></a></p>
+<h3 id="CentOS7系统网络设置"><a href="#CentOS7系统网络设置" class="headerlink" title="CentOS7系统网络设置"></a>CentOS7系统网络设置</h3><h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol>
+<li><p>查看当前虚拟机网关（记住这个网关，后面使用）      <a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhSIg"><img src="https://z3.ax1x.com/2021/06/10/2RhSIg.png" alt="2RhSIg.png"></a>                                                     </p>
+</li>
+<li><p>进入目录命令：cd /etc/sysconfig/network-scripts/</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhELV"><img src="https://z3.ax1x.com/2021/06/10/2RhELV.png" alt="2RhELV.png"></a></p>
+</li>
+<li><p>编辑网卡配置文件命令：vim ifcfg-ens33</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhMW9"><img src="https://z3.ax1x.com/2021/06/10/2RhMW9.png" alt="2RhMW9.png"></a>  </p>
+</li>
+<li><p>配置静态IP，增加修改如下信息：</p>
+<p>修改的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO&#x3D;static      </span><br></pre></td></tr></table></figure>
+
+<p>增加的内容：在笔记中ctrl+c，在客户机中按shift+insert，你的IP地址要修改的</p>
+<p>IPADDR：ip地址</p>
+<p>GATEWAY：网关</p>
+<p>NETMASK：子网掩码</p>
+<p>DNS：域名解析服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IPADDR&#x3D;192.168.248.99</span><br><span class="line">GATEWAY&#x3D;192.168.248.2</span><br><span class="line">NETMASK&#x3D;255.255.255.0</span><br><span class="line">DNS1&#x3D;8.8.8.8</span><br><span class="line">DNS2&#x3D;114.114.114.114</span><br></pre></td></tr></table></figure></li>
+<li><p>重启网卡服务</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2Rh3sx"><img src="https://z3.ax1x.com/2021/06/10/2Rh3sx.png" alt="2Rh3sx.png"></a> </p>
+</li>
+</ol>
+<h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><ol>
+<li><p>查看ip</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhJeK"><img src="https://z3.ax1x.com/2021/06/10/2RhJeK.png" alt="2RhJeK.png"></a> </p>
+</li>
+<li><p>Ping外网，如下信息说明可以连接外网</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhUFe"><img src="https://z3.ax1x.com/2021/06/10/2RhUFe.png" alt="2RhUFe.png"></a> </p>
+</li>
+<li><p>安装客户端软件</p>
+<p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download.html">下载地址</a>，无脑安装即可</p>
+<p>新建会话</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2RhaJH"><img src="https://z3.ax1x.com/2021/06/10/2RhaJH.png" alt="2RhaJH.png"></a></p>
+<p>连接成功</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2Rhyef"><img src="https://z3.ax1x.com/2021/06/10/2Rhyef.png" alt="2Rhyef.png"></a></p>
+<p>可以在客户端软件敲命令啦</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/"># 项目</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/06/10/Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Docker安装配置</a>
+            
+            
+            <a class="next" rel="next" href="/2021/06/10/%E9%A1%B9%E7%9B%AEDmall/">项目Dmall</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
