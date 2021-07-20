@@ -107,6 +107,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -124,13 +186,40 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%A8%A1%E5%9D%97%E5%AF%BC%E8%AF%BB/">模块导读</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>敬请期待</p>
-
+            <h2 id="开源项目😀"><a href="#开源项目😀" class="headerlink" title="开源项目😀"></a>开源项目<strong>😀</strong></h2><h3 id="Why🐬"><a href="#Why🐬" class="headerlink" title="Why🐬"></a>Why<strong>🐬</strong></h3><p>鉴于公司的项目太简单，自己在网上借鉴了一个开源项目，自己记录一下过程。</p>
+<h3 id="How🌳"><a href="#How🌳" class="headerlink" title="How🌳"></a>How<strong>🌳</strong></h3><p>该开源项目采用的是微服务的架构，使用的都是比较流行的技术，下面是微服务架构图</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WNz1s0"><img src="https://z3.ax1x.com/2021/07/20/WNz1s0.png" alt="WNz1s0.png"></a></p>
+<p>微服务划分图如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WNzBsx"><img src="https://z3.ax1x.com/2021/07/20/WNzBsx.png" alt="WNzBsx.png"></a></p>
+<h3 id="Reading-Guide✍"><a href="#Reading-Guide✍" class="headerlink" title="Reading Guide✍"></a>Reading Guide<strong>✍</strong></h3><p><strong>💎</strong><a target="_blank" rel="noopener" href="http://jevinzhao.com/2021/06/10/Linux%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Linux开发环境配置</a></p>
+<p><strong>💎</strong><a target="_blank" rel="noopener" href="http://jevinzhao.com/2021/06/10/Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Docker安装配置</a></p>
+<p><strong>💎</strong><a href="">哈希表，集合</a></p>
+<p><strong>💎</strong><a href="">树，二叉树，二叉搜索树</a></p>
+<p><strong>💎</strong><a href="">泛型递归，树的递归</a></p>
+<p><strong>💎</strong><a href="">分治，回溯</a></p>
+<p><strong>💎</strong><a href="">深度优先，广度优先</a></p>
+<p><strong>💎</strong><a href="">贪心算法</a></p>
+<p><strong>💎</strong><a href="">二分查找</a></p>
+<p><strong>💎</strong><a href="">动态规划</a></p>
+<p><strong>💎</strong><a href="">字典树与并查集</a></p>
+<p><strong>💎</strong><a href="">高级搜索</a></p>
+<p><strong>💎</strong><a href="">位运算</a></p>
+<p><strong>💎</strong><a href="">布隆过滤器，LRU缓存</a></p>
+<p><strong>💎</strong><a href="">排序算法</a></p>
+<p><strong>💎</strong><a href="">字符串算法</a></p>
+<h3 id="Reference🍀"><a href="#Reference🍀" class="headerlink" title="Reference🍀"></a>Reference<strong>🍀</strong></h3>
         </div>
 
         
@@ -147,6 +236,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/"># 项目</a>
+                    
+                        
                 </span>
             </div>
             <div>

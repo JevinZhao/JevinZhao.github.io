@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">七月 20, 2021&nbsp;&nbsp;15:31:11</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="小狗钱钱读书笔记"><a href="#小狗钱钱读书笔记" class="headerlink" title="小狗钱钱读书笔记"></a>小狗钱钱读书笔记</h2><h3 id="1-主要内容"><a href="#1-主要内容" class="headerlink" title="1.主要内容"></a>1.主要内容</h3><p>本书主要讲述了一个小女孩遇到一个叫“钱钱”的小狗，这个小狗会说话，一步步指导小女孩进行理财的故事（1册的主要内容），在第二册中，讲述了小女孩在美国进行交换的经历，引申出做人要具备的优秀品格。</p>
+<h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><h4 id="1册：几条启示（tips）"><a href="#1册：几条启示（tips）" class="headerlink" title="1册：几条启示（tips）"></a>1册：几条启示（tips）</h4><ol>
+<li>钱不是人生中最重要的，但如果我们缺钱的话，钱就会变的格外重要⛳</li>
+<li>天下难事，必作于易；天下大事，必作于细</li>
+<li>我们必须确切的知道自己心里渴望的是什么才行⛳</li>
+<li>太多的人作事犹豫不决，就是因为他们觉得没有完全弄懂这件事，真正的付诸实践要比纯粹的思考有用多啦⛳</li>
+<li>学习就是认识新观念和新想法的过程</li>
+<li>我们对一件事的投入精力越多，成功的可能性也越大</li>
+<li>我们的支出永远是随着我们的收入而增长的</li>
+<li>学会量入为出，才有能力获得更多的钱</li>
+<li>自信程度决定了你是否相信自己的能力，是否相信你自己</li>
+<li>为别人解决一个难题，那么你就能赚到许多钱；把精力集中在你知道的，能做的和拥有的东西上</li>
+<li>许多没有钱的人爱犯的错误：总是有那么多紧急的事情要做，以至于没时间来关注重要的事情</li>
+<li>在遇到困难时，仍要坚持自己的想法；只有少数的人可以坚定不移的贯彻自己的计划</li>
+<li>每天应该在固定的时间里，有规律的做这些事情</li>
+<li>当你决定做一件事请的时候，你必须在72小时内完成，否则你可能永远不会在做了</li>
+<li>只有做自己喜欢的事情，才能获得成功</li>
+<li>欠债的人应该毁掉所有的信用卡；尽可能少地偿还贷款；将不用于生活的那部分钱的一半存起来，另一半用于偿还贷款</li>
+<li>当他们还清债务的时候，他们拥有的财产为0，也就是一无所有</li>
+<li>不要杀死你的鹅</li>
+<li>贫穷更容易产生不幸⛳</li>
+<li>你干的活最多只值报酬的一半，另一半报酬源于你的想法和实施这个想法的勇气</li>
+<li>运气其实只是充分准备加上努力工作的结果</li>
+<li>钱只会留在那些为之付出努力的人的身边。用非法手段取得的不义之财的人，反而会比没钱的时候感觉更糟糕</li>
+<li>⛳要想过更幸福，更满意的生活，人就得改变自身。这和钱无关，金钱本身既不会使人幸福，也不会带来不幸。金钱是中    性的，既不好，也不坏。只有当钱属于某一个人的时候，他才会对这个人产生好的影响或者坏的影响。一个幸福的人有    了钱会更幸福；而一个悲观忧虑的人，钱越多，烦恼就越多</li>
+<li>金钱会暴露一个人的本性</li>
+<li>只有你自己才能强迫自己去做⛳</li>
+<li>最珍贵的礼物是我们自己争取来的。克服了丢面子的恐惧，世界就会向你敞开大门</li>
+<li>决定一件东西价值的唯一因素就是，你愿意为它支付多少钱</li>
+<li>只有当我们把它卖出的时候，才会有亏损。可是我们没有这么做</li>
+<li>“72公式”：在一定的收益率下，我们钱可以增值一倍，72除以年化收益率可以得到年数</li>
+</ol>
+<h4 id="2册：养成优秀品格的7条准则"><a href="#2册：养成优秀品格的7条准则" class="headerlink" title="2册：养成优秀品格的7条准则"></a>2册：养成优秀品格的7条准则</h4><p>​    1.友好亲和<br>​        我有一个强烈的愿望，希望其他人能够像我一样生活美好而幸福<br>​        我不会伤害任何人。我克制自己，不介入任何争端<br>​        我谦虚有礼，尊重他人。我并不是永远正确<br>​    2.勇于承担<br>​        遇事我能自我抉择。我能自行判断对某种情况应该作何种反应<br>​        我不受不公平之事的影响，而是将注意力集中在我能做的事情，我知道的知识和我拥有的东西之上<br>​        我把责任推脱给别人的同时，也把相应的权利转交给了对方<br>​    3.善待他人<br>​        我只称赞他人。如果确实无法称赞他人，那就最好什么都不说<br>​        我尽量不批评他人。如果不得不批评，也要用非常礼貌和友善的方式<br>​        我将注意力集中在他人的优点和闪光点上<br>​    4.帮助给予<br>​        我祝愿自己遇到过的所有人都能一切顺利<br>​        我送给某人礼物，因为我想表达自己对他的好感<br>​        最美好的事情莫过于帮助他人。我总是在想自己能够帮助谁，没有什么比这更令人快乐<br>​    5.感恩之心<br>​        我总是心怀感恩，哪怕是对着看似寻常的事情<br>​        即便遇到了困难，我还是会关注值得感激的事物<br>​        我对身边的人都充满了感激之情，并非常享受和他们共度的美好时光<br>​    6.勤学不辍<br>​        如果我骄傲自满，那无异于说自己不必再学任何东西了。因此我应该保持谦恭好学的态度<br>​        我不仅要阅读好的书籍、写成功日记和知识笔记，还需尽可能多向他人学习<br>​        我不拿自己和别人比较，而是尽我所能做到最好<br>​    7.值得信赖<br>​        我能否成功总是取决于自身培养出的习惯<br>​        如果我是一个非常自律的人，我就能比那些虽有天赋但却懒惰散漫的人获得更多的成功<br>​        我总是很守时。我信守对他人作出的承诺</p>
+<h3 id="3-实践"><a href="#3-实践" class="headerlink" title="3.实践"></a>3.实践</h3><p>读完这两本书，我开始计划自己的理财，虽然现在手头的本金很少，但理财越早开始越好。在支付宝购进了几只基金，准备开始试试水，不考虑赚钱。此外，在此期间还看了比较简短的家庭理财资金分配，详情见：</p>
+<p><strong><a href="">家庭理财的八个神奇定律</a></strong></p>
+<p><strong><a href="">工薪族稳赚不赔的理财方式</a></strong></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/06/10/Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Docker安装配置</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
