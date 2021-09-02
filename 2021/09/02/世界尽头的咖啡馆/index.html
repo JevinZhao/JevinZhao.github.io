@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>世界尽头的咖啡馆 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">世界尽头的咖啡馆</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 2, 2021&nbsp;&nbsp;20:14:33</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="世界尽头的咖啡馆☕"><a href="#世界尽头的咖啡馆☕" class="headerlink" title="世界尽头的咖啡馆☕"></a>世界尽头的咖啡馆☕</h2><h3 id="【总结】📙"><a href="#【总结】📙" class="headerlink" title="【总结】📙"></a>【总结】📙</h3><p>这本书主要是为迷茫的人写的，以“你存在的意义是什么”这样一个类似哲学的问题为切入点，引发读者的思考和改变。这本书很小很简单，但确实打中了我，因为我也曾经历过那样的迷茫和焦虑，并且直至今日也没能真正想明白这个问题的答案。通读本书后，有以下几点思考和反问：</p>
+<h4 id="1、为什么会迷茫？🍃"><a href="#1、为什么会迷茫？🍃" class="headerlink" title="1、为什么会迷茫？🍃"></a>1、为什么会迷茫？🍃</h4><p>所谓迷茫，实际是不知道自己想要什么，所以时间和精力都消耗在了不是自己想要的事情上，倘若这个事情你本身不喜欢、又让你很疲惫，那就进入到了迷茫又无助的状态。大多数人都想不清楚自己要什么，<strong>还有很多人没有勇气去选择自己真正想过的生活</strong>，因为怕不符合社会普遍价值观对自己的看法，也即对成功圆满的定义。所以活的通透的人都是很让人羡慕的，最重要的是，他们知道自己要什么，而不受普遍价值观定义的影响。普遍价值观认为成功圆满的典型形象是：有钱/权/势、选择高消费的产品和服务、在高阶层的环境中生活、有美好和谐的妻子/丈夫、有优秀的孩子。这种影响是很深刻且潜移默化的，从小时候家庭环境的引导、到后期每一个周边环境的评价，每每都在提醒你，做一个异类的成本有多高。倘若你发现大众社会的目标并不是自己想要的，真的要冲破这个禁锢，需承受非常大的心理压力，拥有无比的定力。如若想明白自己想要的，又能切实去做，这样的人，无疑都有一个特征：开心。所以我们会觉得他们通透、充盈。但现实情况是，<strong>我们通常放不下，放不下优渥的薪资，害怕不够有钱会在生活中引起的所有涟漪和压力</strong>。社会的大浪把我们推向一个方向，也因为大众们如此一致的人生价值观使的内卷普遍存在。我们疲惫，却无力逃脱。</p>
+<h4 id="2、反思：你想要什么？不想要什么？🍃"><a href="#2、反思：你想要什么？不想要什么？🍃" class="headerlink" title="2、反思：你想要什么？不想要什么？🍃"></a>2、反思：你想要什么？不想要什么？🍃</h4><p>我想要生活的悠闲和有成就感的工作：</p>
+<p>生活的悠闲（60%）：对自己：规律的健身保持健康和好身材、多元的兴趣并有持续投入的时间、知识的积累让心态更好眼界更广、多样的旅行开拓眼界对人际：与爱人悠闲的交流分享、让十一快乐使自己心情明朗、与家人更多的相处和关怀、对对自己有过帮助的朋友的关心和舒适的付出、忽略无关系同事和陌生人的看法舒适做自己</p>
+<p>有成就感的工作（40%）：</p>
+<p>工作有成效，能看到它的实际成果，让其对自己或对别人有帮助，能获得心灵上的满足感；不为了金钱而低身下气或委屈自己；可以选择不去做或不与某人合作；工作环境是真诚干净的。</p>
+<h4 id="3、怎么平衡想要的生活与金钱之间的关系？🍃"><a href="#3、怎么平衡想要的生活与金钱之间的关系？🍃" class="headerlink" title="3、怎么平衡想要的生活与金钱之间的关系？🍃"></a>3、怎么平衡想要的生活与金钱之间的关系？🍃</h4><p>金钱是大多数规则的基础，就像马斯洛需求的底层是生理和安全一样，只有在有足够的经济基础上去谈生活才是合理的。所以挣钱没错，怎样通过自己想做的事情挣钱才是更应该思索的话题。</p>
+<h4 id="4、你当前的生活，是你想要的吗？🍃"><a href="#4、你当前的生活，是你想要的吗？🍃" class="headerlink" title="4、你当前的生活，是你想要的吗？🍃"></a>4、你当前的生活，是你想要的吗？🍃</h4><p>不是，过于平淡和单一。</p>
+<p>① 目前的工作只是为了挣钱，没有激情、自我实现和成就感；</p>
+<p>② 在消费上，大项开支舍不得，比如很久没有去旅行，没有出国；</p>
+<p>③ 生活内容太单调，没有活动、娱乐。</p>
+<p>如何改变？</p>
+<p>① 降低工作压力：工作没有激情，但尚未找到我真正有激情、能创造价值、又能挣不比现在少的钱的工作，所以当下，重要的是改变压力心态。当前工作的优点是，节奏慢，没有加班，我在团队的能力属于中上，领导也认可，所以不需要有太多的自我压力。如果希望工作仅占用全部有效时间中40%的精力，那就不需要因为没有全勤工作而愧疚，不需要一直把精神绷紧。真正做事的时候仍旧专注尽力，但闲下来的时候可以去做自己的视野拓展和知识提升，不必愧疚，不必满怀压力。坏的情况是不晋升不加薪，最坏的情况是换工作，而已。</p>
+<p>② 有意义的事情不介意开支：对于属于“想要的生活”中的一部分的花费，上调自己的花费预期，不怕贵。</p>
+<p>③ 生活色彩多样性：逐步恢复兴趣，周末增加一些外出、娱乐、甚至活动等。</p>
+<h4 id="5、关于反向浪：你有多少时间花在了无效事情上？🍃"><a href="#5、关于反向浪：你有多少时间花在了无效事情上？🍃" class="headerlink" title="5、关于反向浪：你有多少时间花在了无效事情上？🍃"></a>5、关于反向浪：你有多少时间花在了无效事情上？🍃</h4><p>减少非必要时间支出，比如做选择的时间（网上购物、点外卖）；在有效利用非必要时间上目前做的很好，比如地铁上看书；目前玩游戏时间较久，每天大概1个小时，暂时不需要调整，在脚伤没好的情况下，每天的健身、钢琴、遛狗、做饭的时间缺失，导致时间有盈余，有点干瘪，目前可以这样放松，等脚伤好后，一切会自行恢复。</p>
+<h3 id="【笔记】🍵"><a href="#【笔记】🍵" class="headerlink" title="【笔记】🍵"></a>【笔记】🍵</h3><h4 id="一、寻找存在的意义PFE，改变迷茫📌"><a href="#一、寻找存在的意义PFE，改变迷茫📌" class="headerlink" title="一、寻找存在的意义PFE，改变迷茫📌"></a>一、寻找存在的意义PFE，改变迷茫📌</h4><p>1、迷茫：我不知道我来到这世上到底为了什么，也不知道我想做什么，我只是在重复大多数人在做的事。</p>
+<p>2、思考存在的意义：如果一个人弄清了自己为什么存在——知道了自己的PFE，他就能把时间花在有助于实现PFE的事情上；没弄清自己PFE的人也会花时间做很多事，但他们是把时间花在了无益于实现PFE的事情上。</p>
+<p>3、你对成功、幸福和圆满的定义，有多少是受他人影响的呢？</p>
+<h4 id="二、为什么没有时间做想做的事？📌"><a href="#二、为什么没有时间做想做的事？📌" class="headerlink" title="二、为什么没有时间做想做的事？📌"></a>二、为什么没有时间做想做的事？📌</h4><p>1、绿海龟-反向浪启示如果你和你想做的事情给你不在同一个频道，你就会浪费许多精力。等你有机会做你想做的事时，你可能已经没有力气或时间了。每一天都有很多人想要让你把时间和精力花在他们身上，比如邮件、促销、不请自来的服务。你很快就会发现，自己在做大家都在做的事，或者别人想让你做的事。在我的人生中，那些想要消耗我注意力、精力和时间，但与我的PFE并不相关的人、活动和各种事物，就是涌向岸边的反向海浪。而能帮我成就PFE的人、活动和各种事物，就是涌向大海的正向海浪。因此，我在反向浪上浪费的时间和精力越多，留给正向浪的时间和精力就越少。</p>
+<p>2、广告对财务的剥夺我们每天都暴露在大量营销信息中，如果不谨慎点，我们肯定会把自己的幸福和满足寄托在某样产品或服务上。最后，我们会陷入一种财务困境，必须不断去做事情挣钱，尽管那些事情不是我们真正想做的。广告的营销点在于抓住人们的“恐惧”和“欲望”。有种广告，它内容的重点在于让你开心或产生安全感，但其中蕴含的信息是“只有当你拥有这件产品时，你才能获得满足感，人生才会圆满”。</p>
+<p>3、不喜欢的工作的消耗多数人的现状：“每天我都工作很久，没有多少闲暇时光；作为补偿，我用物质来奖励自己，通过玩游戏和购物来得到缓解。我原本的人生规划是，工作到六十岁，等到退休，才能去做自己想做的事。我感觉自己很可怜。”</p>
+<h4 id="三、你害怕死亡吗？📌"><a href="#三、你害怕死亡吗？📌" class="headerlink" title="三、你害怕死亡吗？📌"></a>三、你害怕死亡吗？📌</h4><p>没自问过这些问题的人，没有为实现PFE而努力过的人，这些人害怕死亡。如果你已经做成想做的事，或者每天都在做想做的事，那就没理由害怕失去做这些事的机会。</p>
+<h4 id="四、如何去做自己想做的事情？📌"><a href="#四、如何去做自己想做的事情？📌" class="headerlink" title="四、如何去做自己想做的事情？📌"></a>四、如何去做自己想做的事情？📌</h4><p>1、金钱重要但没有那么重要：只有当你弄清自己为什么存在，并且开始为这个存在意义做出实际努力后，你才能感到满足，且不会像现在这样看重金钱。</p>
+<p>2、指数效应：如果你告诉某人一个消息，他再把这个消息告诉其他人，其他人又会告诉更多人。用不了多久，你的消息就会传播给更多人。做自己喜欢的事情的人为什么运气好：当你在做自己喜欢的事情，会充满激情和热情，叠加指数效应时，更多的人愿意帮助你，所以看起来运气更好。</p>
+<h4 id="五、怎样去寻找自己存在的意义？📌"><a href="#五、怎样去寻找自己存在的意义？📌" class="headerlink" title="五、怎样去寻找自己存在的意义？📌"></a>五、怎样去寻找自己存在的意义？📌</h4><p>1、体验不同的事物，接触不同的理念，留意自己对各种事物的反应。</p>
+<p>2、从宏观视角来看，我们的压力、焦虑、胜利和失败全部微不足道。</p>
+<p>3、他们窥探篱笆墙上的小洞，清楚地看到他们想过的那种生活，但出于一些原因，他们不会打开门，走进那种生活。</p>
+<p><strong>Reference：转载自豆瓣书评，该读者的境界我还没达到，可能是因为太穷的缘故，我现在一心想的是搞钱，有没有生活都不所谓，你说我愚昧也好，势利也好，I don’t care！！毕竟你跟一个乞丐谈生活就是一个玩笑👻</strong>可能只有到达一定的高度才能有读者的觉悟吧。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"># 读书笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/07/20/%E5%B0%8F%E7%8B%97%E9%92%B1%E9%92%B1/">小狗钱钱</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
