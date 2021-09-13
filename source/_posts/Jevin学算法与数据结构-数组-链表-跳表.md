@@ -341,7 +341,7 @@ O(log_2{n})
 $$
 更加详细的介绍详见：
 
-[一文彻底搞懂跳表的各种时间复杂度、适用场景以及实现原理]: https://juejin.cn/post/6844903955831619597
+[一文彻底搞懂跳表的各种时间复杂度、适用场景以及实现原理](https://juejin.cn/post/6844903955831619597)
 
 ### 跳表工程应用
 
@@ -349,8 +349,8 @@ Redis
 
 详见：
 
-[跳跃表]: https://redisbook.readthedocs.io/en/latest/internal-datastruct/skiplist.html
-[为啥 redis 使用跳表(skiplist)]: https://www.zhihu.com/question/20202931
+[跳跃表](https://redisbook.readthedocs.io/en/latest/internal-datastruct/skiplist.html)
+[为啥 redis 使用跳表(skiplist)](:https://www.zhihu.com/question/20202931)
 
 ## 数组与链表的对比🔥
 
