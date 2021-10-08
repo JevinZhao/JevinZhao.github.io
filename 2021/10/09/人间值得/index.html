@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>人间值得 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">人间值得</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十月 9, 2021&nbsp;&nbsp;7:37:13</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="人间值得🎬"><a href="#人间值得🎬" class="headerlink" title="人间值得🎬"></a>人间值得🎬</h2><h3 id="【总结】📘"><a href="#【总结】📘" class="headerlink" title="【总结】📘"></a>【总结】📘</h3><p>未来岁月漫长，依旧值得期待。</p>
+<p>这本书主要是作者恒子奶奶对人应该如何度过一生，才不会辜负生命，这一终极问题的思考。包含了工作，爱，人际关系，幸福，死亡等课题的箴言，作者娓娓道来的讲述，总有一句令你豁然开朗，消解心头烦忧，感受生命的力量，让你意识到“这是你自己的人生”，只要活出自己，就会发现“人间值得”。</p>
+<h4 id="1、为什么会活得焦虑，压抑🍹"><a href="#1、为什么会活得焦虑，压抑🍹" class="headerlink" title="1、为什么会活得焦虑，压抑🍹"></a>1、为什么会活得焦虑，压抑🍹</h4><p>读这本书的真实用意是想借鉴一下，别人对于生命以及人生的理解。面对着一群很有成就的同学们，我是感到很焦虑与压抑的。对于一个很要强的人，是不允许自己落后的。世俗对一个人的评价其实就是钱与权，但得到这些的人是否真的快乐呢？我对这个有很深刻的体会，当月薪5k和月薪15k的时候，带给我的仅仅是消费上的提升，以及生活底气的增加。幸福感其实真滴不是收入增加这一个维度，它关乎的更多的是一个人的生活态度，心态。</p>
+<h4 id="2、生活的真实状态🍹"><a href="#2、生活的真实状态🍹" class="headerlink" title="2、生活的真实状态🍹"></a>2、生活的真实状态🍹</h4><p>自从工作后，我直观的感受是生活有的时候真滴是身不由己，你每天会遇到各种各样的事情，工作，婚姻，家庭。怎样去看待这些事情呢？人生不如意是常态，那又怎样去调节自己的心态呢？看这本书其实就是当某件事自己难以理解，接受的时候，拥有更加开放，淡定的心态去看待这件事情。</p>
+<h3 id="【笔记】🍺"><a href="#【笔记】🍺" class="headerlink" title="【笔记】🍺"></a>【笔记】🍺</h3><h4 id="一、关于工作📌"><a href="#一、关于工作📌" class="headerlink" title="一、关于工作📌"></a>一、关于工作📌</h4><p><strong>为了钱而工作，这是理所当然的事</strong></p>
+<p><strong>工作本没有喜欢和讨厌之分，只是养家糊口的手段，完全没有必要思考这种庸人自扰的问题，尽力去做即是排除杂念的良方。</strong></p>
+<h4 id="二、关于婚姻📌"><a href="#二、关于婚姻📌" class="headerlink" title="二、关于婚姻📌"></a>二、关于婚姻📌</h4><p><strong>家庭和睦比什么都重要，只要守护它，其他都会慢慢变好。</strong></p>
+<p>可是在现实生活里，很多夫妻总是想方设法地试图去改变对方，但结果总是不尽如人意，有的甚至因此影响了夫妻感情，婚姻亮起了红灯。俗话说的好，江山易改，本性难移，改变一个人很难，就连马云也说过：“调整好自己，不要去改变别人”。</p>
+<h4 id="三、关于人际关系📌"><a href="#三、关于人际关系📌" class="headerlink" title="三、关于人际关系📌"></a>三、关于人际关系📌</h4><p>人和人不能走得太近”，“人与人之间，要学会放手，保持适度的距离”，“在我看来，人生的本质就是一个人活着”。</p>
+<p>无论在职场还是家庭，“只要是别人给予的东西，自己就应该感谢对方”。如果以这样的心态和别人相处，人际关系就不可能出现大的问题。</p>
+<p>交朋友要根据自己的喜好来选择，通过权衡得失来交往是不可取的<br>当你想要“遵从内心而活”，你就会发现自己不会被外在多余事情所困扰。</p>
+<h4 id="四、关于困境📌"><a href="#四、关于困境📌" class="headerlink" title="四、关于困境📌"></a>四、关于困境📌</h4><ol>
+<li><p><strong>活在当下</strong></p>
+<p>该吃就吃，该睡就睡，告诉自己“等明天醒来再考虑</p>
+</li>
+<li><p><strong>不要和别人比较</strong></p>
+<p>每个人都有自己的生活轨迹，不要追随别人的脚步，那样不只徒增烦恼，还会活得很累</p>
+</li>
+<li><p><strong>对自己不要太苛刻，人生不必太用力</strong></p>
+</li>
+</ol>
+<p>   世界本就不完美，所以，我们要学会接受生活的不完美。没有必要非逼着自己去达到“理想状态”。当你学会转换思维，专注于当下怎样努力推进事情顺利发展，而不是过分关注事情的结果时，你会轻松很多。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"># 读书笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/09/22/Jevin%E5%AD%A6%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88-%E9%98%9F%E5%88%97/">Jevin学算法与数据结构-栈-队列</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
