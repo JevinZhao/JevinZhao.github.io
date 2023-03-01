@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>面试之Java基础 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">面试之Java基础</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">三月 1, 2023&nbsp;&nbsp;20:17:16</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="面试之Java基础知识"><a href="#面试之Java基础知识" class="headerlink" title="面试之Java基础知识"></a>面试之Java基础知识</h2><h3 id="1、什么是B-S架构？什么是C-S架构？"><a href="#1、什么是B-S架构？什么是C-S架构？" class="headerlink" title="1、什么是B/S架构？什么是C/S架构？"></a>1、什么是B/S架构？什么是C/S架构？</h3><h3 id="2、Java都有那些开发平台？"><a href="#2、Java都有那些开发平台？" class="headerlink" title="2、Java都有那些开发平台？"></a>2、Java都有那些开发平台？</h3><h3 id="3、什么是JDK？什么是JRE"><a href="#3、什么是JDK？什么是JRE" class="headerlink" title="3、什么是JDK？什么是JRE?"></a>3、什么是JDK？什么是JRE?</h3><h3 id="4、Java语言有哪些特点？"><a href="#4、Java语言有哪些特点？" class="headerlink" title="4、Java语言有哪些特点？"></a>4、Java语言有哪些特点？</h3><h3 id="5、面向对象和面向过程的区别？"><a href="#5、面向对象和面向过程的区别？" class="headerlink" title="5、面向对象和面向过程的区别？"></a>5、面向对象和面向过程的区别？</h3><h3 id="6、什么是数据结构？"><a href="#6、什么是数据结构？" class="headerlink" title="6、什么是数据结构？"></a>6、什么是数据结构？</h3><h3 id="7、Java的数据结构有那些？"><a href="#7、Java的数据结构有那些？" class="headerlink" title="7、Java的数据结构有那些？"></a>7、Java的数据结构有那些？</h3><h3 id="8、什么是OOP"><a href="#8、什么是OOP" class="headerlink" title="8、什么是OOP?"></a>8、什么是OOP?</h3><h3 id="9、类与对象的关系"><a href="#9、类与对象的关系" class="headerlink" title="9、类与对象的关系?"></a>9、类与对象的关系?</h3><h3 id="10、Java中有几种数据类型？"><a href="#10、Java中有几种数据类型？" class="headerlink" title="10、Java中有几种数据类型？"></a>10、Java中有几种数据类型？</h3><h3 id="11、标识符的命名规则？"><a href="#11、标识符的命名规则？" class="headerlink" title="11、标识符的命名规则？"></a>11、标识符的命名规则？</h3><h3 id="12、instanceof关键字的作用？"><a href="#12、instanceof关键字的作用？" class="headerlink" title="12、instanceof关键字的作用？"></a>12、instanceof关键字的作用？</h3><h3 id="13、什么是隐式转换，什么是显式转换？"><a href="#13、什么是隐式转换，什么是显式转换？" class="headerlink" title="13、什么是隐式转换，什么是显式转换？"></a>13、什么是隐式转换，什么是显式转换？</h3><h3 id="14、Char类型能不能转成int类型？能不能转化成string类型，能不能转成double类型？"><a href="#14、Char类型能不能转成int类型？能不能转化成string类型，能不能转成double类型？" class="headerlink" title="14、Char类型能不能转成int类型？能不能转化成string类型，能不能转成double类型？"></a>14、Char类型能不能转成int类型？能不能转化成string类型，能不能转成double类型？</h3><h3 id="15、什么是拆装箱？"><a href="#15、什么是拆装箱？" class="headerlink" title="15、什么是拆装箱？"></a>15、什么是拆装箱？</h3><h3 id="16、Java中的包装类都是那些？"><a href="#16、Java中的包装类都是那些？" class="headerlink" title="16、Java中的包装类都是那些？"></a>16、Java中的包装类都是那些？</h3><h3 id="17、一个java类中包含那些内容？"><a href="#17、一个java类中包含那些内容？" class="headerlink" title="17、一个java类中包含那些内容？"></a>17、一个java类中包含那些内容？</h3><h3 id="18、那针对浮点型数据运算出现的误差的问题，你怎么解决？"><a href="#18、那针对浮点型数据运算出现的误差的问题，你怎么解决？" class="headerlink" title="18、那针对浮点型数据运算出现的误差的问题，你怎么解决？"></a>18、那针对浮点型数据运算出现的误差的问题，你怎么解决？</h3><h3 id="19、面向对象的特征有哪些方面"><a href="#19、面向对象的特征有哪些方面" class="headerlink" title="19、面向对象的特征有哪些方面?"></a>19、面向对象的特征有哪些方面?</h3><h3 id="20、访问修饰符-public-private-protected-以及不写（默认）-时的区别？"><a href="#20、访问修饰符-public-private-protected-以及不写（默认）-时的区别？" class="headerlink" title="20、访问修饰符 public,private,protected,以及不写（默认） 时的区别？"></a>20、访问修饰符 public,private,protected,以及不写（默认） 时的区别？</h3><h3 id="21、String-是最基本的数据类型吗？"><a href="#21、String-是最基本的数据类型吗？" class="headerlink" title="21、String 是最基本的数据类型吗？"></a>21、String 是最基本的数据类型吗？</h3><h3 id="22、float-f-3-4-是否正确？"><a href="#22、float-f-3-4-是否正确？" class="headerlink" title="22、float f=3.4;是否正确？"></a>22、float f=3.4;是否正确？</h3><h3 id="23、short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？"><a href="#23、short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？" class="headerlink" title="23、short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1; 有错吗？"></a>23、short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1; 有错吗？</h3><h3 id="24、重载和重写的区别？"><a href="#24、重载和重写的区别？" class="headerlink" title="24、重载和重写的区别？"></a>24、重载和重写的区别？</h3><h3 id="25、equals与-的区别？"><a href="#25、equals与-的区别？" class="headerlink" title="25、equals与==的区别？"></a>25、equals与==的区别？</h3><h3 id="26、-i与i-的区别？"><a href="#26、-i与i-的区别？" class="headerlink" title="26、++i与i++的区别？"></a>26、++i与i++的区别？</h3><h3 id="27、程序的结构有那些？"><a href="#27、程序的结构有那些？" class="headerlink" title="27、程序的结构有那些？"></a>27、程序的结构有那些？</h3><h3 id="28、数组实例化有几种方式？"><a href="#28、数组实例化有几种方式？" class="headerlink" title="28、数组实例化有几种方式？"></a>28、数组实例化有几种方式？</h3><h3 id="29、Java中各种数据默认值？"><a href="#29、Java中各种数据默认值？" class="headerlink" title="29、Java中各种数据默认值？"></a>29、Java中各种数据默认值？</h3><h3 id="30、Java常用包有那些？"><a href="#30、Java常用包有那些？" class="headerlink" title="30、Java常用包有那些？"></a>30、Java常用包有那些？</h3><h3 id="31、Object类常用方法有那些？"><a href="#31、Object类常用方法有那些？" class="headerlink" title="31、Object类常用方法有那些？"></a>31、Object类常用方法有那些？</h3><h3 id="32、java中有没有指针？"><a href="#32、java中有没有指针？" class="headerlink" title="32、java中有没有指针？"></a>32、java中有没有指针？</h3><h3 id="33、java中是值传递引用传递？"><a href="#33、java中是值传递引用传递？" class="headerlink" title="33、java中是值传递引用传递？"></a>33、java中是值传递引用传递？</h3><h3 id="34、实例化数组后，能不能改变数组长度呢？"><a href="#34、实例化数组后，能不能改变数组长度呢？" class="headerlink" title="34、实例化数组后，能不能改变数组长度呢？"></a>34、实例化数组后，能不能改变数组长度呢？</h3><h3 id="35、假设数组内有5个元素，如果对数组进行反序，该如何做？"><a href="#35、假设数组内有5个元素，如果对数组进行反序，该如何做？" class="headerlink" title="35、假设数组内有5个元素，如果对数组进行反序，该如何做？"></a>35、假设数组内有5个元素，如果对数组进行反序，该如何做？</h3><h3 id="36、形参与实参区别？"><a href="#36、形参与实参区别？" class="headerlink" title="36、形参与实参区别？"></a>36、形参与实参区别？</h3><h3 id="37、构造方法能不能显式调用？"><a href="#37、构造方法能不能显式调用？" class="headerlink" title="37、构造方法能不能显式调用？"></a>37、构造方法能不能显式调用？</h3><h3 id="38、什么是方法重载？"><a href="#38、什么是方法重载？" class="headerlink" title="38、什么是方法重载？"></a>38、什么是方法重载？</h3><h3 id="39、构造方法能不能重写？能不能重载？"><a href="#39、构造方法能不能重写？能不能重载？" class="headerlink" title="39、构造方法能不能重写？能不能重载？"></a>39、构造方法能不能重写？能不能重载？</h3><h3 id="40、内部类与静态内部类的区别？"><a href="#40、内部类与静态内部类的区别？" class="headerlink" title="40、内部类与静态内部类的区别？"></a>40、内部类与静态内部类的区别？</h3><h3 id="41、Static关键字有什么作用？"><a href="#41、Static关键字有什么作用？" class="headerlink" title="41、Static关键字有什么作用？"></a>41、Static关键字有什么作用？</h3><h3 id="42、final在java中的作用，有哪些用法"><a href="#42、final在java中的作用，有哪些用法" class="headerlink" title="42、final在java中的作用，有哪些用法?"></a>42、final在java中的作用，有哪些用法?</h3><h3 id="43、StringString-StringBuffffer-和-StringBuilder-的区别是什么？"><a href="#43、StringString-StringBuffffer-和-StringBuilder-的区别是什么？" class="headerlink" title="43、StringString StringBuffffer 和 StringBuilder 的区别是什么？"></a>43、StringString StringBuffffer 和 StringBuilder 的区别是什么？</h3><h3 id="44、String-str-”aaa”-与String-str-new-String-“aaa”-一样吗？"><a href="#44、String-str-”aaa”-与String-str-new-String-“aaa”-一样吗？" class="headerlink" title="44、String str=”aaa”,与String str=new String(“aaa”)一样吗？"></a>44、String str=”aaa”,与String str=new String(“aaa”)一样吗？</h3><h3 id="45、讲下java中的math类有那些常用方法？"><a href="#45、讲下java中的math类有那些常用方法？" class="headerlink" title="45、讲下java中的math类有那些常用方法？"></a>45、讲下java中的math类有那些常用方法？</h3><h3 id="46、String类的常用方法有那些？"><a href="#46、String类的常用方法有那些？" class="headerlink" title="46、String类的常用方法有那些？"></a>46、String类的常用方法有那些？</h3><h3 id="47、Java中的继承是单继承还是多继承？"><a href="#47、Java中的继承是单继承还是多继承？" class="headerlink" title="47、Java中的继承是单继承还是多继承？"></a>47、Java中的继承是单继承还是多继承？</h3><h3 id="48、Super与this表示什么？"><a href="#48、Super与this表示什么？" class="headerlink" title="48、Super与this表示什么？"></a>48、Super与this表示什么？</h3><h3 id="49、普通类与抽象类有什么区别？"><a href="#49、普通类与抽象类有什么区别？" class="headerlink" title="49、普通类与抽象类有什么区别？"></a>49、普通类与抽象类有什么区别？</h3><h3 id="50、什么是接口？为什么需要接口？"><a href="#50、什么是接口？为什么需要接口？" class="headerlink" title="50、什么是接口？为什么需要接口？"></a>50、什么是接口？为什么需要接口？</h3><h3 id="51、接口有什么特点？"><a href="#51、接口有什么特点？" class="headerlink" title="51、接口有什么特点？"></a>51、接口有什么特点？</h3><h3 id="52、抽象类和接口的区别"><a href="#52、抽象类和接口的区别" class="headerlink" title="52、抽象类和接口的区别?"></a>52、抽象类和接口的区别?</h3><h3 id="53、Hashcode的作用？"><a href="#53、Hashcode的作用？" class="headerlink" title="53、Hashcode的作用？"></a>53、Hashcode的作用？</h3><h3 id="54、-Java的四种引用，强弱软虚？"><a href="#54、-Java的四种引用，强弱软虚？" class="headerlink" title="54、 Java的四种引用，强弱软虚？"></a>54、 Java的四种引用，强弱软虚？</h3><h3 id="55、Java创建对象有几种方式？"><a href="#55、Java创建对象有几种方式？" class="headerlink" title="55、Java创建对象有几种方式？"></a>55、Java创建对象有几种方式？</h3><h3 id="56、有没有可能两个不相等的对象有相同的hashcode？"><a href="#56、有没有可能两个不相等的对象有相同的hashcode？" class="headerlink" title="56、有没有可能两个不相等的对象有相同的hashcode？"></a>56、有没有可能两个不相等的对象有相同的hashcode？</h3><h3 id="57、拷贝和浅拷贝的区别是什么"><a href="#57、拷贝和浅拷贝的区别是什么" class="headerlink" title="57、拷贝和浅拷贝的区别是什么?"></a>57、拷贝和浅拷贝的区别是什么?</h3><h3 id="58、static都有哪些用法"><a href="#58、static都有哪些用法" class="headerlink" title="58、static都有哪些用法?"></a>58、static都有哪些用法?</h3><h3 id="59、a-a-b与a-b有什么区别吗"><a href="#59、a-a-b与a-b有什么区别吗" class="headerlink" title="59、a=a+b与a+=b有什么区别吗?"></a>59、a=a+b与a+=b有什么区别吗?</h3><h3 id="60、final、finalize-、finally？"><a href="#60、final、finalize-、finally？" class="headerlink" title="60、final、finalize()、finally？"></a>60、final、finalize()、finally？</h3><h3 id="61、JDBC操作的步骤？"><a href="#61、JDBC操作的步骤？" class="headerlink" title="61、JDBC操作的步骤？"></a>61、JDBC操作的步骤？</h3><h3 id="62、在使用jdbc的时候，如何防止出现sql注入的问题？"><a href="#62、在使用jdbc的时候，如何防止出现sql注入的问题？" class="headerlink" title="62、在使用jdbc的时候，如何防止出现sql注入的问题？"></a>62、在使用jdbc的时候，如何防止出现sql注入的问题？</h3><h3 id="63、怎么在JDBC内调用一个存储过程？"><a href="#63、怎么在JDBC内调用一个存储过程？" class="headerlink" title="63、怎么在JDBC内调用一个存储过程？"></a>63、怎么在JDBC内调用一个存储过程？</h3><h3 id="64、是否了解连接池，使用连接池有什么好处？"><a href="#64、是否了解连接池，使用连接池有什么好处？" class="headerlink" title="64、是否了解连接池，使用连接池有什么好处？"></a>64、是否了解连接池，使用连接池有什么好处？</h3><h3 id="65、你所了解的数据源技术有那些？使用数据源有什么好处？"><a href="#65、你所了解的数据源技术有那些？使用数据源有什么好处？" class="headerlink" title="65、你所了解的数据源技术有那些？使用数据源有什么好处？"></a>65、你所了解的数据源技术有那些？使用数据源有什么好处？</h3><h3 id="66、-amp-和-amp-amp-的区别？"><a href="#66、-amp-和-amp-amp-的区别？" class="headerlink" title="66、&amp;和&amp;&amp;的区别？"></a>66、&amp;和&amp;&amp;的区别？</h3><h3 id="67、静态内部类如何定义？"><a href="#67、静态内部类如何定义？" class="headerlink" title="67、静态内部类如何定义？"></a>67、静态内部类如何定义？</h3><h3 id="68、什么是成员内部类？"><a href="#68、什么是成员内部类？" class="headerlink" title="68、什么是成员内部类？"></a>68、什么是成员内部类？</h3><h3 id="69、Static-Nested-Class-和-Inner-Class的不同？"><a href="#69、Static-Nested-Class-和-Inner-Class的不同？" class="headerlink" title="69、Static Nested Class 和 Inner Class的不同？"></a>69、Static Nested Class 和 Inner Class的不同？</h3><h3 id="70、什么时候用assert？"><a href="#70、什么时候用assert？" class="headerlink" title="70、什么时候用assert？"></a>70、什么时候用assert？</h3><h3 id="71、Java有没有goto？"><a href="#71、Java有没有goto？" class="headerlink" title="71、Java有没有goto？"></a>71、Java有没有goto？</h3><h3 id="72、数组有没有length-这个方法-String有没有length-这个方法？"><a href="#72、数组有没有length-这个方法-String有没有length-这个方法？" class="headerlink" title="72、数组有没有length()这个方法? String有没有length()这个方法？"></a>72、数组有没有length()这个方法? String有没有length()这个方法？</h3><h3 id="73、用最有效率的方法算出2乘以8等于几？"><a href="#73、用最有效率的方法算出2乘以8等于几？" class="headerlink" title="73、用最有效率的方法算出2乘以8等于几？"></a>73、用最有效率的方法算出2乘以8等于几？</h3><h3 id="74、float型float-f-3-4是否正确"><a href="#74、float型float-f-3-4是否正确" class="headerlink" title="74、float型float f=3.4是否正确?"></a>74、float型float f=3.4是否正确?</h3><h3 id="75、排序都有哪几种方法？请列举"><a href="#75、排序都有哪几种方法？请列举" class="headerlink" title="75、排序都有哪几种方法？请列举"></a>75、排序都有哪几种方法？请列举</h3><h3 id="76、静态变量和实例变量的区别？"><a href="#76、静态变量和实例变量的区别？" class="headerlink" title="76、静态变量和实例变量的区别？"></a>76、静态变量和实例变量的区别？</h3><h3 id="77、说出一些常用的类，包，接口，请各举5个"><a href="#77、说出一些常用的类，包，接口，请各举5个" class="headerlink" title="77、说出一些常用的类，包，接口，请各举5个"></a>77、说出一些常用的类，包，接口，请各举5个</h3><h3 id="78、a-hashCode-有什么用？与-a-equals-b-有什么关系？"><a href="#78、a-hashCode-有什么用？与-a-equals-b-有什么关系？" class="headerlink" title="78、a.hashCode() 有什么用？与 a.equals(b) 有什么关系？"></a>78、a.hashCode() 有什么用？与 a.equals(b) 有什么关系？</h3><h3 id="79、Java-中的编译期常量是什么？使用它又什么风险？"><a href="#79、Java-中的编译期常量是什么？使用它又什么风险？" class="headerlink" title="79、Java 中的编译期常量是什么？使用它又什么风险？"></a>79、Java 中的编译期常量是什么？使用它又什么风险？</h3><h3 id="80、在-Java-中，如何跳出当前的多重嵌套循环？"><a href="#80、在-Java-中，如何跳出当前的多重嵌套循环？" class="headerlink" title="80、在 Java 中，如何跳出当前的多重嵌套循环？"></a>80、在 Java 中，如何跳出当前的多重嵌套循环？</h3><h3 id="81、构造器（constructor）是否可被重写（override）？"><a href="#81、构造器（constructor）是否可被重写（override）？" class="headerlink" title="81、构造器（constructor）是否可被重写（override）？"></a>81、构造器（constructor）是否可被重写（override）？</h3><h3 id="82、两个对象值相同-x-equals-y-true-，但却可有不同的hashcode，这句话对不对？"><a href="#82、两个对象值相同-x-equals-y-true-，但却可有不同的hashcode，这句话对不对？" class="headerlink" title="82、两个对象值相同(x.equals(y) == true)，但却可有不同的hashcode，这句话对不对？"></a>82、两个对象值相同(x.equals(y) == true)，但却可有不同的hashcode，这句话对不对？</h3><h3 id="83、是否可以继承-String-类？"><a href="#83、是否可以继承-String-类？" class="headerlink" title="83、是否可以继承 String 类？"></a>83、是否可以继承 String 类？</h3><h3 id="84、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"><a href="#84、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？" class="headerlink" title="84、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"></a>84、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</h3><h3 id="85、String-和-StringBuilder、StringBuffer-的区别？"><a href="#85、String-和-StringBuilder、StringBuffer-的区别？" class="headerlink" title="85、String 和 StringBuilder、StringBuffer 的区别？"></a>85、String 和 StringBuilder、StringBuffer 的区别？</h3><h3 id="86、重载（Overload）和重写（Override）的区别？"><a href="#86、重载（Overload）和重写（Override）的区别？" class="headerlink" title="86、重载（Overload）和重写（Override）的区别？"></a>86、重载（Overload）和重写（Override）的区别？</h3><h3 id="87、char-型变量中能不能存贮一个中文汉字，为什么？"><a href="#87、char-型变量中能不能存贮一个中文汉字，为什么？" class="headerlink" title="87、char 型变量中能不能存贮一个中文汉字，为什么？"></a>87、char 型变量中能不能存贮一个中文汉字，为什么？</h3><h3 id="88、抽象类（abstract-class）和接口（interface）有什么异同-？"><a href="#88、抽象类（abstract-class）和接口（interface）有什么异同-？" class="headerlink" title="88、抽象类（abstract class）和接口（interface）有什么异同 ？"></a>88、抽象类（abstract class）和接口（interface）有什么异同 ？</h3><h3 id="89、静态嵌套类-Static-Nested-Class-和内部类（Inner-Class）的不同？"><a href="#89、静态嵌套类-Static-Nested-Class-和内部类（Inner-Class）的不同？" class="headerlink" title="89、静态嵌套类(Static Nested Class)和内部类（Inner Class）的不同？"></a>89、静态嵌套类(Static Nested Class)和内部类（Inner Class）的不同？</h3><h3 id="90、Java-中会存在内存泄漏吗，请简单描述。"><a href="#90、Java-中会存在内存泄漏吗，请简单描述。" class="headerlink" title="90、Java 中会存在内存泄漏吗，请简单描述。"></a>90、Java 中会存在内存泄漏吗，请简单描述。</h3><h3 id="91、如何实现对象克隆？"><a href="#91、如何实现对象克隆？" class="headerlink" title="91、如何实现对象克隆？"></a>91、如何实现对象克隆？</h3><h3 id="92、接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concreteclass）？"><a href="#92、接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concreteclass）？" class="headerlink" title="92、接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concreteclass）？"></a>92、接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concreteclass）？</h3><h3 id="93、一个”-java”源文件中是否可以包含多个类（不是内部类）？有什么限制？"><a href="#93、一个”-java”源文件中是否可以包含多个类（不是内部类）？有什么限制？" class="headerlink" title="93、一个”.java”源文件中是否可以包含多个类（不是内部类）？有什么限制？"></a>93、一个”.java”源文件中是否可以包含多个类（不是内部类）？有什么限制？</h3><h3 id="94、Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？"><a href="#94、Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？" class="headerlink" title="94、Anonymous Inner Class(匿名内部类)是否可以继承其它类？"></a>94、Anonymous Inner Class(匿名内部类)是否可以继承其它类？</h3><h3 id="95、内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><a href="#95、内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？" class="headerlink" title="95、内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？"></a>95、内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？</h3><h3 id="96、Java-中的-final-关键字有哪些用法？"><a href="#96、Java-中的-final-关键字有哪些用法？" class="headerlink" title="96、Java 中的 final 关键字有哪些用法？"></a>96、Java 中的 final 关键字有哪些用法？</h3>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E9%9D%A2%E8%AF%95/"># 面试</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/03/01/Jevin%E5%AD%A6%E7%AE%97%E6%B3%95%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95/">Jevin学算法之字符串匹配算法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
