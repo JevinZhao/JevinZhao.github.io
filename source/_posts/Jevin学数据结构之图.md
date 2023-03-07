@@ -1,6 +1,6 @@
 ---
 title: Jevin学数据结构之图
-date: 2023-01-04 13:38:39
+date: 2022-01-04 13:38:39
 tags: 数据结构
 categories: 数据结构与算法
 mathjax: true # 加入这个声明，这篇文章就会开启mathjax渲染

@@ -1,6 +1,6 @@
 ---
 title: Jevin学数据结构之红黑树
-date: 2023-01-02 09:50:00
+date: 2022-01-02 09:50:00
 tags: 数据结构
 categories: 数据结构与算法
 mathjax: true # 加入这个声明，这篇文章就会开启mathjax渲染

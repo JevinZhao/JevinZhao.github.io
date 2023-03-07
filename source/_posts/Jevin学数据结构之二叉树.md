@@ -1,6 +1,6 @@
 ---
 title: Jevin学数据结构之二叉树
-date: 2023-01-01 21:20:31
+date: 2022-01-01 21:20:31
 tags: 数据结构
 categories: 数据结构与算法
 mathjax: true # 加入这个声明，这篇文章就会开启mathjax渲染
