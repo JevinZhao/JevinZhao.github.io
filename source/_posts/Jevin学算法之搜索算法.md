@@ -1,6 +1,6 @@
 ---
 title: Jevin学算法之搜索算法
-date: 2023-01-05 21:31:21
+date: 2022-01-05 21:31:21
 tags: 算法
 categories: 数据结构与算法
 mathjax: true # 加入这个声明，这篇文章就会开启mathjax渲染

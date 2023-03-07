@@ -1,6 +1,6 @@
 ---
 title: Jevin学算法之字符串匹配算法
-date: 2023-03-01 11:04:30
+date: 2022-03-01 11:04:30
 tags: 算法
 categories: 数据结构与算法
 mathjax: true # 加入这个声明，这篇文章就会开启mathjax渲染
