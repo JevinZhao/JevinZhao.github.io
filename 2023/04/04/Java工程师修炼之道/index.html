@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Jevin Zhao">
+
+
+
+
+
+<title>Java工程师修炼之道 | Jevin Zhao</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Jevin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Jevin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java工程师修炼之道</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Jevin Zhao</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">四月 4, 2023&nbsp;&nbsp;20:20:40</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Java工程师修炼之道"><a href="#Java工程师修炼之道" class="headerlink" title="Java工程师修炼之道"></a>Java工程师修炼之道</h1><p><a target="_blank" rel="noopener" href="https://imgse.com/i/pp5CdOK"><img src="https://s1.ax1x.com/2023/04/04/pp5CdOK.md.png" alt="pp5CdOK.md.png"></a></p>
+<p>总结：适合用来建立知识框架，查漏补缺，介绍很多知识，都是点到为止，原理性的东西比较少。</p>
+<h2 id="1-后端技术的导言"><a href="#1-后端技术的导言" class="headerlink" title="1.后端技术的导言"></a>1.后端技术的导言</h2><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><ul>
+<li>高可用、可容错、可扩展、可维护、稳定性、<br>安全性</li>
+</ul>
+<h3 id="后端基础设施"><a href="#后端基础设施" class="headerlink" title="后端基础设施"></a>后端基础设施</h3><ul>
+<li><p>API网关：请求统一入口</p>
+<ul>
+<li><p>后端接口的功能</p>
+<ul>
+<li>负载均衡</li>
+<li>API访问权限控制</li>
+<li>用户鉴权</li>
+</ul>
+</li>
+<li><p>传统做法</p>
+<ul>
+<li>使用Nginx 做负载均衡，然后在每个业务应用里做API 接口的访问权限控制和用户鉴权，更优化一点的方式则是把后两者做成公共类库供所有业务调用</li>
+</ul>
+</li>
+<li><p>API网关做法</p>
+<ul>
+<li>集成到一起作为一个服务，这样既可以动态地修改权限控制和鉴权机制，也可以减少每个业务集成这些机制的成本，这种服务就是API 网关。</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>由于所有API 请求都要经过网关，它很容易成为系统的性能瓶颈。</li>
+</ul>
+</li>
+<li><p>优化</p>
+<ul>
+<li>可以采取的方案是去掉API 网关，让业务应用直接对接统一认证中心，在基础框架层面保证每个API 调用都需要先通过统一认证中心的认证，这里可以采取缓存认证结果的方式避免对统一认证中心产生过大的请求压力。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>业务应用和后端基础框架</p>
+<ul>
+<li><p>业务应用</p>
+<ul>
+<li>在线</li>
+<li>内部</li>
+</ul>
+</li>
+<li><p>框架</p>
+<ul>
+<li><p>MVC</p>
+<ul>
+<li>springMVC</li>
+<li>阿里webX</li>
+</ul>
+</li>
+<li><p>IOC</p>
+<ul>
+<li>spring</li>
+</ul>
+</li>
+<li><p>ORM</p>
+<ul>
+<li>Mybatis</li>
+<li>JdbcTemplate</li>
+<li>Sharding—JDBC</li>
+<li>Mycat</li>
+</ul>
+</li>
+<li><p>缓存框架</p>
+<ul>
+<li><p>redis</p>
+<ul>
+<li>Spring的RedisTemplate</li>
+<li>Jedis</li>
+</ul>
+</li>
+<li><p>Memcached</p>
+</li>
+</ul>
+</li>
+<li><p>JavaEE应用性能检测框架</p>
+<ul>
+<li>Jwebap</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>后端基础服务</p>
+<ul>
+<li><p>缓存</p>
+<ul>
+<li>redis</li>
+</ul>
+</li>
+<li><p>数据库</p>
+<ul>
+<li>MySQL</li>
+<li>Hbase</li>
+</ul>
+</li>
+<li><p>搜索引擎</p>
+<ul>
+<li>es</li>
+<li>solr</li>
+</ul>
+</li>
+<li><p>消息队列</p>
+<ul>
+<li><p>kafka</p>
+<ul>
+<li>大数据</li>
+</ul>
+</li>
+<li><p>Rabbitmq</p>
+<ul>
+<li>重事务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件存储</p>
+<ul>
+<li>HDFS</li>
+</ul>
+</li>
+<li><p>统一认证中心</p>
+<ul>
+<li>用户的注册、登录验证、Token 鉴权。<br>·内部信息系统用户的管理和登录鉴权。<br>• APP 的管理，包括APP 的secret 生成、APP 信息的验证（如验证接口签名）等</li>
+</ul>
+</li>
+<li><p>单点登录</p>
+<ul>
+<li>只需要一次用户登录，就能够进入多个业务应用（权限可以不相同），非常方便用户操作 </li>
+<li>比较成熟的、用得最多的单点登录系统应该是耶鲁大学开源的CAS</li>
+</ul>
+</li>
+<li><p>配置中心</p>
+<ul>
+<li>能够在线动态修改配置文件并生效。配置文件可以区分环境（开发、测试、生产等）。 在Java 中可以通过注解、XML 配置的方式引人相关配置。</li>
+<li>一般选择ZooKeeper 作为配置存储。</li>
+</ul>
+</li>
+<li><p>服务治理框架</p>
+<ul>
+<li><p>对于外部AP I 调用或者客户端对后端API 的访问，可以使用HTTP 协议或者阻RESTful（当然也可以直接通过最原始的Socket 来调用） 。</p>
+</li>
+<li><p>对于内部服务间的调用， 一般都是通<br>过RPC 机制来进行的</p>
+<ul>
+<li>• RMI 。</li>
+<li>• Hessian 。</li>
+<li>• Thrift</li>
+<li>• Dubbo 。</li>
+<li>Hessian 是基于HTTP协议的， Dubbo 是基于TCP 协议的，而古lfi丘则同时支持两种协议。</li>
+</ul>
+</li>
+<li><p>传统的ESB （企业服务总线）本质上就是一个服务治理方案</p>
+</li>
+<li><p>阿里开源的D ubb o 则对以上方案做了很好的实现，也是目前很多公司都在使用的方案；</p>
+</li>
+</ul>
+</li>
+<li><p>调度中心</p>
+<ul>
+<li><p>在很多业务中，定时调度是一个非常普遍的场景， 比如定时去抓取数据、定时刷新，订单的状态等</p>
+</li>
+<li><p>统一调度中心则是对所有的调度任务进行管理，这样能够统一对调度集群进行调优、扩展、任务管理等。</p>
+<ul>
+<li>· 根据Cron 表达式调度任务。</li>
+<li>． 动态修改、停止、删除任务。</li>
+<li>． 支持任务分片执行。</li>
+<li>． 支持任务工作流，比如一个任务完成之后再执行下一个任务。</li>
+<li>． 任务支持脚本、代码、U RL 等多种形式。</li>
+<li>· 任务执行的日志记录、故障报警。</li>
+</ul>
+</li>
+<li><p>现在很多方案都是使用ZooKeeper 来实现SpringQuartz 的分布式集群。<br>此外，当当网开源的elastic-job 则在基础的分布式调度之上又加入了弹性资源利用等更<br>强大的功能。</p>
+</li>
+</ul>
+</li>
+<li><p>日志服务</p>
+<ul>
+<li>通过实现Log4j 或者LogBack 的appender 来实现统一日志框架，然后通过RPC 调用将日志打印到日志服务器上。</li>
+</ul>
+</li>
+<li><p>数据基础设施</p>
+<ul>
+<li>数据高速公路</li>
+<li>离线数据分析</li>
+<li>实时数据分析</li>
+<li>数据即席分析</li>
+</ul>
+</li>
+<li><p>故障监控</p>
+<ul>
+<li><p>系统监控</p>
+<ul>
+<li>主要指对主机的带宽、C PU 、内存、硬盘、I/O 等硬件资源的监控。</li>
+</ul>
+</li>
+<li><p>业务监控</p>
+<ul>
+<li><p>· 告警日志要记录发生故障的机器ID ，尤其是在集群服务中，如果没有记录机器ID ，那么对于后续的问题定位会很困难。<br>· 要对告警做聚合，不要每一个故障都单独进行告警，这样会对工程师造成极大的困扰。<br>· 要对告警做等级划分，不能对所有告警都做同样的优先级处理。<br>· 使用微信作为告警软件，能够在节省短信成本的情况下，保证告警的到达率。</p>
+</li>
+<li><p>如果是分布式服务，并且在日志数据量特别大的情况下，如何定位日志就成为了难题。</p>
+<ul>
+<li>建立ELK ( Elasticsearch + Logstash + Kibana ）日志集中分析平台，便于快速搜索、定位日志。</li>
+<li>建立分布式请求追踪系统（也可以叫全链路监测系统） 。对于分布式系统尤其是微服务架构，能够极方便地在海量调用中快速定位并收集单个异常请求信息， 也能快速定位一条请求链路的性能瓶颈。</li>
+<li>如果你的微服务实现使用了Spring Cloud ，那么Spring Cloud Sleuth 则是最佳的分布式追踪方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java后端技术概览"><a href="#Java后端技术概览" class="headerlink" title="Java后端技术概览"></a>Java后端技术概览</h3><ul>
+<li><p>软件开发的核心原则</p>
+<ul>
+<li>Don’t Repeat Yourself</li>
+<li>Keep it simple stupid</li>
+<li>You Ain’t Gonna Need It</li>
+<li>Done is better than perfect</li>
+<li>Choose the mos t suitable things</li>
+</ul>
+</li>
+<li><p>软开过程管理</p>
+<ul>
+<li><p>项目管理</p>
+</li>
+<li><p>测试驱动开发</p>
+</li>
+<li><p>持续集成</p>
+<ul>
+<li>Jenkins 、Quick Build</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发工具</p>
+<ul>
+<li>编辑器</li>
+<li>源码版本管理</li>
+<li>项目工具</li>
+</ul>
+</li>
+<li><p>运行环境</p>
+<ul>
+<li><p>Linux</p>
+</li>
+<li><p>应用服务器</p>
+<ul>
+<li>Tomcat 、Jetty 这两者只是Servlet 容器</li>
+<li>Nginx 则是目前最流行的We b 服<br>务器。</li>
+</ul>
+</li>
+<li><p>负载均衡</p>
+<ul>
+<li>在高并发流量环境下，后端服务会以集群的模式对外提供服务。在集群的前面，需要负载均衡器将请求分配到集群的各个节点上。</li>
+<li>LVS 是最流行的四层负载均衡软件， HAProxy是另一个既支持四层又支持七层负载均衡的软件， Nginx 则是七层负载均衡最流行的解决方案。</li>
+<li>为了保证同等角色的服务的高可用，如LVS 经常作为流量的入口，会部署多个LVS 节点互为主备，防止一个节点挂掉导致服务不可用。而实现互为主备的技术目前用得最多的就Keepalived。</li>
+</ul>
+</li>
+<li><p>虚拟化</p>
+</li>
+</ul>
+</li>
+<li><p>第三方服务</p>
+<ul>
+<li>邮件</li>
+<li>短信</li>
+<li>消息推送</li>
+<li>开放平台</li>
+<li>支付接口</li>
+</ul>
+</li>
+<li><p>计算机基础科学知识</p>
+<ul>
+<li>数据结构</li>
+<li>算法</li>
+<li>业务相关算法</li>
+<li>计算机网络</li>
+<li>设计模式</li>
+</ul>
+</li>
+<li><p>数据处理相关技能</p>
+<ul>
+<li>数据传输、数据存储、数据<br>分析处理都成为关键环节</li>
+</ul>
+</li>
+<li><p>Java编程知识</p>
+</li>
+<li><p>系统架构演进</p>
+<ul>
+<li>D ubbo 算是微服务架构中用得比较多的框架，但Dubbo 仅仅解决了微服务架构中的一部分问题。另外， Spring Cloud 则基本上涵盖了微服务架构的各个方面。</li>
+</ul>
+</li>
+<li><p>部署架构</p>
+<ul>
+<li><p>对于Web 应用来说LVS+Nginx+Tomcat+MySQL+Redis 即可构成一个简单、通用的部署架构</p>
+<ul>
+<li>• LVS 作为最前置的节点，负责在网络第四层转发流量、负载均衡。</li>
+<li>． 多个LVS 使用Keepalived 互为主备实现高可用。</li>
+<li>• Nginx 作为反向代理，负责在网络第七层转发流量、负载均衡。</li>
+<li>• Tomcat 作为业务容器，主要的应用代码都放在这里面。</li>
+<li>• Redis 作为缓存， 隔离高并发请求和后端数据库。</li>
+<li>• MySQL 以主从模式对数据做持久化。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="怎样学习"><a href="#怎样学习" class="headerlink" title="怎样学习"></a>怎样学习</h3><ul>
+<li><p>扎实基础</p>
+</li>
+<li><p>只其所以然</p>
+</li>
+<li><p>动手实践</p>
+</li>
+<li><p>频繁练习</p>
+</li>
+<li><p>持续学习</p>
+</li>
+<li><p>自我总结</p>
+</li>
+<li><p>如何学习一门新技术</p>
+<ul>
+<li><p>what</p>
+<ul>
+<li>官方文档定义</li>
+<li>对比同类技术的优缺点，适用场景</li>
+<li>技术的架构组成</li>
+</ul>
+</li>
+<li><p>why</p>
+<ul>
+<li>此技术解决什么问题</li>
+<li>自己会怎么解决这个问题</li>
+</ul>
+</li>
+<li><p>how</p>
+<ul>
+<li><p>官网QuickStart</p>
+</li>
+<li><p>写demo</p>
+</li>
+<li><p>看源码</p>
+<ul>
+<li>1 ）阅读该技术的架构文挡，了解其总体架构和组成。</li>
+<li>2 ）根据总体架构，将源码文件以模块或者上下层级进行分类。</li>
+<li>3 ）从未阅读过的模块中选择最独立（依赖性最小）的模块代码读起。</li>
+<li>4 ）阅读此模块的功能介绍文档。</li>
+<li>5 ）阅读此模块的源代码。</li>
+<li>6 ）. －边阅读一边整理调用关系（以表或者树的形式） 。</li>
+<li>7 ）转到第3 ）步。</li>
+</ul>
+</li>
+<li><p>项目实践</p>
+</li>
+<li><p>分享</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Java项目与工程化"><a href="#2-Java项目与工程化" class="headerlink" title="2.Java项目与工程化"></a>2.Java项目与工程化</h2><h3 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h3><ul>
+<li>Ant</li>
+<li>Maven</li>
+<li>Gradle</li>
+</ul>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ul>
+<li>SVN</li>
+<li>Git</li>
+</ul>
+<h3 id="代码质量保证"><a href="#代码质量保证" class="headerlink" title="代码质量保证"></a>代码质量保证</h3><ul>
+<li><p>JUnit</p>
+</li>
+<li><p>Mock</p>
+<ul>
+<li>EasyMock</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-开发框架"><a href="#3-开发框架" class="headerlink" title="3.开发框架"></a>3.开发框架</h2><h3 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h3><h3 id="ROM"><a href="#ROM" class="headerlink" title="ROM"></a>ROM</h3><ul>
+<li><p>对象关系映射，是一种为了解决面向对象与关系<br>型数据库不匹配而出现的技术，便开发者能够用面向对象的方式使用关系型数据库</p>
+<ul>
+<li>· 一个规定Mapping Metadata 的工具，即数据库中的表、列与对象以及对象属性的映射。<br>． 一个对持久类对象进行CRUD 操作的API 。<br>· 一个语言或API 用来规定与类和类属性相关的查询。<br>· 一种技术可以让0灿f 的实现同事务对象一起进行缓存、延迟加载等操作。</li>
+</ul>
+</li>
+<li><p>Mybatis</p>
+<ul>
+<li>My Batis 的核心是SqlSessionFactory</li>
+<li>$在这里的作用只是做字符串替换，不会修改或转义字符串。因此，能使用＃的地方就不要使用$，除非是像o rder by 这种不是参数的地方。</li>
+<li>缓存</li>
+<li>结果映射</li>
+</ul>
+</li>
+<li><p>Hibernate</p>
+</li>
+</ul>
+<h3 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h3><ul>
+<li><p>• JDK Logging。</p>
+</li>
+<li><p>• Apache Log4j。</p>
+</li>
+<li><p>• Apache Log4j2 。</p>
+</li>
+<li><p>• Logback。</p>
+</li>
+<li><p>日志接口框架</p>
+<ul>
+<li>Commons Logging 、SLJ4J</li>
+</ul>
+</li>
+<li><p>目前比较推崇的是使用SLF4J 统一所有框架接口，然后都转换到Logback 的底层实<br>现</p>
+</li>
+</ul>
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><ul>
+<li>互联网领域主要以Spring MVC 为主要的Web 开发框架</li>
+</ul>
+<h2 id="4-spring"><a href="#4-spring" class="headerlink" title="4.spring"></a>4.spring</h2><h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><ul>
+<li>IOC</li>
+<li>AOP</li>
+<li>SpringEL</li>
+<li>Spring双亲上下文机制</li>
+<li>事件机制</li>
+<li>Bean的初始化与销毁</li>
+<li>Bean的动态构造</li>
+</ul>
+<h3 id="数据操作框架"><a href="#数据操作框架" class="headerlink" title="数据操作框架"></a>数据操作框架</h3><ul>
+<li><p>Spring ORM</p>
+<ul>
+<li><p>Spring JDBC</p>
+<ul>
+<li>注入一个数据库连接池即可构造JdbcTemplate</li>
+</ul>
+</li>
+<li><p>Spring TX</p>
+<ul>
+<li>使用tx:annotation -driven 开启Spring 的注解事务，并配置transaction-manager</li>
+<li>使用＠Transactional 注解一个方法使其开启事务</li>
+<li>开启了事务的方法在数据库错误时应该抛出异常，否则无法做到事务回滚</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Spring Data Redis</p>
+<ul>
+<li>基于Jedis 之上对Redis 操作的封装</li>
+</ul>
+</li>
+<li><p>Spring Data MOngoDB</p>
+<ul>
+<li>基于Mongo Java Driver 对Mon go DB 的操作封装</li>
+</ul>
+</li>
+</ul>
+<h3 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h3><ul>
+<li>配置</li>
+<li>运行原理</li>
+<li>组成模块</li>
+</ul>
+<h3 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h3><ul>
+<li><p>Spring Expression Language</p>
+<ul>
+<li>表达式引擎</li>
+<li>引用bean</li>
+</ul>
+</li>
+<li><p>Spring Remoting</p>
+<ul>
+<li>远程过程访问支持</li>
+</ul>
+</li>
+<li><p>Spring与JMX集成</p>
+</li>
+<li><p>Spring Quartz</p>
+<ul>
+<li>定时任务</li>
+</ul>
+</li>
+<li><p>Spring CORS </p>
+<ul>
+<li>跨域请求支持</li>
+</ul>
+</li>
+<li><p>其他</p>
+</li>
+</ul>
+<h3 id="Spring-Could"><a href="#Spring-Could" class="headerlink" title="Spring Could"></a>Spring Could</h3><ul>
+<li><p>Config</p>
+<ul>
+<li>统一的配置中心</li>
+</ul>
+</li>
+<li><p>Security</p>
+<ul>
+<li>Oauth2客户端的负载均衡可以作为API网关的实现</li>
+</ul>
+</li>
+<li><p>Consul</p>
+<ul>
+<li>服务的统一发现，注册，配置，类似于Dubbo</li>
+</ul>
+</li>
+<li><p>Bus</p>
+<ul>
+<li>消息总线</li>
+</ul>
+</li>
+<li><p>Sleuth</p>
+<ul>
+<li>链路追踪</li>
+</ul>
+</li>
+<li><p>Netflix的各个组件</p>
+<ul>
+<li><p>Zuul</p>
+<ul>
+<li>API网关</li>
+</ul>
+</li>
+<li><p>Eureka</p>
+<ul>
+<li>注册中心</li>
+</ul>
+</li>
+<li><p>Hystrix</p>
+<ul>
+<li>服务的容错，降级，容错</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-数据存储"><a href="#5-数据存储" class="headerlink" title="5.数据存储"></a>5.数据存储</h2><h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><ul>
+<li>关系型数据库是采用关系模型来组织数据的数据库，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表格及其之间的联系所组成的一个数据组</li>
+<li>MySql</li>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+</ul>
+<h3 id="非关系数据库"><a href="#非关系数据库" class="headerlink" title="非关系数据库"></a>非关系数据库</h3><ul>
+<li>MongoDB</li>
+<li>CouchDB</li>
+<li>HBase</li>
+</ul>
+<h3 id="缓存系统"><a href="#缓存系统" class="headerlink" title="缓存系统"></a>缓存系统</h3><ul>
+<li>Memcached</li>
+<li>Redis</li>
+</ul>
+<h3 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h3><ul>
+<li>Solr</li>
+<li>Elasticsearch</li>
+</ul>
+<h2 id="6-数据通信"><a href="#6-数据通信" class="headerlink" title="6.数据通信"></a>6.数据通信</h2><h3 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h3><ul>
+<li><p>表现层状态转移</p>
+</li>
+<li><p>资源，数据</p>
+</li>
+<li><p>数据表现形式</p>
+</li>
+<li><p>状态变化，HTTP method</p>
+<ul>
+<li><p>GET</p>
+<ul>
+<li>获取</li>
+</ul>
+</li>
+<li><p>POST</p>
+<ul>
+<li>创建</li>
+</ul>
+</li>
+<li><p>PUT</p>
+<ul>
+<li>修改</li>
+</ul>
+</li>
+<li><p>DELETE</p>
+<ul>
+<li>删除</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h3><ul>
+<li>内部服务之间调用</li>
+<li>dubbo</li>
+<li>RMI</li>
+</ul>
+<h3 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h3><ul>
+<li>解耦</li>
+<li>异步</li>
+<li>削峰</li>
+</ul>
+<h2 id="7-Java编程进阶"><a href="#7-Java编程进阶" class="headerlink" title="7.Java编程进阶"></a>7.Java编程进阶</h2><h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h3 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h3><h3 id="子主题-4"><a href="#子主题-4" class="headerlink" title="子主题 4"></a>子主题 4</h3><h2 id="8-性能调优"><a href="#8-性能调优" class="headerlink" title="8.性能调优"></a>8.性能调优</h2><h2 id="9-安全技术"><a href="#9-安全技术" class="headerlink" title="9.安全技术"></a>9.安全技术</h2><p><em>XMind: ZEN - Trial Version</em></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"># 读书笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2023/04/04/Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E8%AF%A6%E8%A7%A3/">Java高并发编程详解</a>
+            
+            
+            <a class="next" rel="next" href="/2023/03/24/%E6%94%AF%E4%BB%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">支付系统设计</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Jevin Zhao | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
